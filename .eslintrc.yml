@@ -7,4 +7,4 @@ env:
   browser: true
   commonjs: true
 
-extends: 'htmlacademy/es6'
+extends: ['htmlacademy/es6', 'plugin:react/recommended']
