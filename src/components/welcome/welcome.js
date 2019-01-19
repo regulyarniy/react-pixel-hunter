@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-const Welcome = () => {
+const Welcome = (props) => {
   return (
     <section className="greeting central--blur">
       <img className="greeting__logo" src="img/logo_ph-big.svg" width="201" height="89" alt="Pixel Hunter" />
@@ -17,7 +18,7 @@ const Welcome = () => {
           <li>Помни, главное — смотреть очень внимательно.</li>
         </ul>
       </div>
-      <button className="greeting__continue" type="button">
+      <button className="greeting__continue" onClick={props.handleSwitchToNextScreen} type="button">
         <span className="visually-hidden">Продолжить</span>
         <svg className="icon" width="64" height="64" viewBox="0 0 64 64" fill="#000000">
           <use xlinkHref="img/sprite.svg#arrow-right"></use>
@@ -25,6 +26,10 @@ const Welcome = () => {
       </button>
     </section>
   );
+};
+
+Welcome.propTypes = {
+  handleSwitchToNextScreen: PropTypes.func.isRequired,
 };
 
 export default Welcome;

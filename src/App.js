@@ -8,6 +8,7 @@ import GameThree from "./components/game/game-three";
 import Stats from "./components/stats/stats";
 import ModalError from "./components/modal/modal-error";
 import ModalConfirm from "./components/modal/modal-confirm";
+import Footer from "./components/footer/footer";
 
 class App extends Component {
   constructor(props) {
@@ -21,24 +22,67 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <button className="prev-screen" onClick={() => this.handleSwitchToPrevScreenClick()}>prev</button>
-        <button className="next-screen" onClick={() => this.handleSwitchToNextScreenClick()}>next</button>
-        {this.screens[this.state.currentScreen]()}
+        <main id="main" className="central">
+          {this.renderScreen()}
+        </main>
+        <Footer/>
       </Fragment>
     );
   }
 
-  handleSwitchToNextScreenClick() {
+  renderScreen() {
+    switch (this.state.currentScreen) {
+      case 0:
+        return <Intro
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 1:
+        return <Welcome
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 2:
+        return <Rules
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 3:
+        return <GameOne
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 4:
+        return <GameTwo
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 5:
+        return <GameThree
+          handleSwitchToNextScreen={() => this.switchToNextScreen()}
+          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+        />;
+      case 6:
+        return <Stats handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}/>;
+      case 7:
+        return <ModalError />;
+      case 8:
+        return <ModalConfirm />;
+      default:
+        return null;
+    }
+  }
+
+  switchToNextScreen() {
     const nextScreenNumber = this.state.currentScreen + 1;
     this.setState({
       currentScreen: nextScreenNumber < this.screens.length ? nextScreenNumber : 0
     });
   }
 
-  handleSwitchToPrevScreenClick() {
-    const prevScreenNumber = this.state.currentScreen - 1;
+  switchToWelcomeScreen() {
     this.setState({
-      currentScreen: prevScreenNumber < 0 ? this.screens.length - 1 : prevScreenNumber
+      currentScreen: 1
     });
   }
 }

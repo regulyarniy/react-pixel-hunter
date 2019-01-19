@@ -1,19 +1,14 @@
 import React, {Fragment} from 'react';
+import PropTypes from "prop-types";
+import Header from "../header/header";
 
-const Rules = () => {
+const Rules = (props) => {
   return (
     <Fragment>
-      <header className="header">
-        <button className="back">
-          <span className="visually-hidden">Вернуться к началу</span>
-          <svg className="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
-            <use xlinkHref="img/sprite.svg#arrow-left"/>
-          </svg>
-          <svg className="icon" width="101" height="44" viewBox="0 0 101 44" fill="#000000">
-            <use xlinkHref="img/sprite.svg#logo-small"/>
-          </svg>
-        </button>
-      </header>
+      <Header
+        isGameScreen={false}
+        handleSwitchToWelcomeScreen={props.handleSwitchToWelcomeScreen}
+      />
       <section className="rules">
         <h2 className="rules__title">Правила</h2>
         <ul className="rules__description">
@@ -26,13 +21,18 @@ const Rules = () => {
           <li>Ошибиться можно не более 3 раз.</li>
         </ul>
         <p className="rules__ready">Готовы?</p>
-        <form className="rules__form">
+        <form className="rules__form" onSubmit={props.handleSwitchToNextScreen}>
           <input className="rules__input" type="text" placeholder="Ваше Имя"/>
-          <button className="rules__button  continue" type="submit" disabled>Go!</button>
+          <button className="rules__button  continue" type="submit">Go!</button>
         </form>
       </section>
     </Fragment>
   );
+};
+
+Rules.propTypes = {
+  handleSwitchToNextScreen: PropTypes.func.isRequired,
+  handleSwitchToWelcomeScreen: PropTypes.func.isRequired
 };
 
 export default Rules;

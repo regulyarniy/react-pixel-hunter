@@ -1,19 +1,14 @@
 import React, {Fragment} from "react";
+import Header from "../header/header";
+import PropTypes from "prop-types";
 
-const Stats = () => {
+const Stats = (props) => {
   return (
     <Fragment>
-      <header className="header">
-        <button className="back">
-          <span className="visually-hidden">Вернуться к началу</span>
-          <svg className="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
-            <use xlinkHref="img/sprite.svg#arrow-left"/>
-          </svg>
-          <svg className="icon" width="101" height="44" viewBox="0 0 101 44" fill="#000000">
-            <use xlinkHref="img/sprite.svg#logo-small"/>
-          </svg>
-        </button>
-      </header>
+      <Header
+        isGameScreen={false}
+        handleSwitchToWelcomeScreen={props.handleSwitchToWelcomeScreen}
+      />
       <section className="result">
         <h2 className="result__title">Победа!</h2>
         <table className="result__table">
@@ -22,6 +17,7 @@ const Stats = () => {
               <td className="result__number">1.</td>
               <td colSpan="2">
                 <ul className="stats">
+
                   <li className="stats__result stats__result--wrong"/>
                   <li className="stats__result stats__result--slow"/>
                   <li className="stats__result stats__result--fast"/>
@@ -123,6 +119,10 @@ const Stats = () => {
     </Fragment>
   )
   ;
+};
+
+Stats.propTypes = {
+  handleSwitchToWelcomeScreen: PropTypes.func.isRequired
 };
 
 export default Stats;

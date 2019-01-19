@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './sass/style.scss';
 
-ReactDOM.render(<App />, document.getElementById(`main`));
+ReactDOM.render(<App />, document.getElementById(`app`));
