@@ -19,26 +19,26 @@
   margin: 5px;
 
   &--unknown {
-    background: url("/img/result-unknown.svg") no-repeat center;
+    background: url("~/img/result-unknown.svg") no-repeat center;
   }
 
   &--wrong {
-    background: url("/img/result-wrong.svg") no-repeat center;
+    background: url("~/img/result-wrong.svg") no-repeat center;
   }
 
   &--correct {
-    background: url("/img/result-correct.svg") no-repeat center;
+    background: url("~/img/result-correct.svg") no-repeat center;
   }
 
   &--slow {
-    background: url("/img/result-slow.svg") no-repeat center;
+    background: url("~/img/result-slow.svg") no-repeat center;
   }
 
   &--fast {
-    background: url("/img/result-fast.svg") no-repeat center;
+    background: url("~/img/result-fast.svg") no-repeat center;
   }
 
   &--alive {
-    background: url("/img/heart__full.svg") no-repeat center;
+    background: url("~/img/heart__full.svg") no-repeat center;
   }
 }
