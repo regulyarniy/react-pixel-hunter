@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.46714b19f55e02f4d8540d678bde7d1f.js"
+  "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.ac785cde3091ef4ce1920ef57e4de747.js"
 );
 
 workbox.clientsClaim();
