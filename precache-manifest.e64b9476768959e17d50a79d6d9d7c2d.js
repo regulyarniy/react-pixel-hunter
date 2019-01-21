@@ -1,31 +1,35 @@
 self.__precacheManifest = [
   {
-    "revision": "400c14541b7297a097e57cc8f271f8a5",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotomedium.400c1454.woff2"
+    "revision": "1ffc52aee7d9b8f87ccdb7f3d2189951",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
   },
   {
-    "revision": "a400e4ebaf8fbc9ffc22",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.e6a4f257.chunk.css"
+    "revision": "17156fa3b090da60c8a6",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.43ef383c.chunk.css"
   },
   {
-    "revision": "4a34e45d34cafb7623bd",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.4a34e45d.chunk.js"
+    "revision": "1a02ec3d449f5f5e2f3d",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.1a02ec3d.chunk.js"
   },
   {
     "revision": "26faf38a24897238bf65",
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/runtime~main.26faf38a.js"
   },
   {
+    "revision": "b434b7c853337d7655e291183c70e0c0",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/sprite.b434b7c8.svg"
+  },
+  {
     "revision": "add4cae340fa6ba6563ce2e8d9ffd19d",
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotobold.add4cae3.woff2"
   },
   {
-    "revision": "1ffc52aee7d9b8f87ccdb7f3d2189951",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
+    "revision": "17156fa3b090da60c8a6",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.17156fa3.chunk.js"
   },
   {
-    "revision": "a400e4ebaf8fbc9ffc22",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.a400e4eb.chunk.js"
+    "revision": "400c14541b7297a097e57cc8f271f8a5",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotomedium.400c1454.woff2"
   },
   {
     "revision": "af01b5037ff63cf05210745f4c248269",
@@ -44,7 +48,7 @@ self.__precacheManifest = [
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/egg_big.ee652214.png"
   },
   {
-    "revision": "0c2c1be4955cc691c7283427c6f8215c",
+    "revision": "fdf865245ae19363c266402ce8e09f96",
     "url": "https://regulyarniy.github.io/react-pixel-hunter/index.html"
   }
 ];
