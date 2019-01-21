@@ -1,4 +1,5 @@
 import React from "react";
+import sprite from "../../img/sprite.svg";
 
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <a href="https://htmlacademy.ru" className="social-link">
         <span className="visually-hidden">HTML Academy</span>
         <svg className="icon" width="108" height="37" viewBox="0 0 108 37" fill="#000000">
-          <use xlinkHref="img/sprite.svg#logo-htmla"/>
+          <use xlinkHref={`${sprite}#logo-htmla`}/>
         </svg>
       </a>
       <span className="footer__made-in">Сделано в <a href="https://htmlacademy.ru"
@@ -15,25 +16,25 @@ const Footer = () => {
         <a href="https://twitter.com/htmlacademy_ru" className="social-link">
           <span className="visually-hidden">Твиттер</span>
           <svg className="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-            <use xlinkHref="img/sprite.svg#icon-tw"/>
+            <use xlinkHref={`${sprite}#icon-tw`}/>
           </svg>
         </a>
         <a href="https://www.instagram.com/htmlacademy/" className="social-link">
           <span className="visually-hidden">Инстаграм</span>
           <svg className="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-            <use xlinkHref="img/sprite.svg#icon-ig"/>
+            <use xlinkHref={`${sprite}#icon-ig`}/>
           </svg>
         </a>
         <a href="https://www.facebook.com/htmlacademy" className="social-link">
           <span className="visually-hidden">Фейсбук</span>
           <svg className="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-            <use xlinkHref="img/sprite.svg#icon-fb"/>
+            <use xlinkHref={`${sprite}#icon-fb`}/>
           </svg>
         </a>
         <a href="https://vk.com/htmlacademy" className="social-link">
           <span className="visually-hidden">ВКонтакте</span>
           <svg className="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-            <use xlinkHref="img/sprite.svg#icon-vk"/>
+            <use xlinkHref={`${sprite}#icon-vk`}/>
           </svg>
         </a>
       </div>

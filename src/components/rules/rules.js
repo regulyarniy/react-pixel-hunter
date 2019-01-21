@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
 import Header from "../header/header";
+import imgIconPhoto from "../../img/icon-photo.png";
+import imgIconPaint from "../../img/icon-paint.png";
 
 const Rules = (props) => {
   return (
@@ -13,8 +15,8 @@ const Rules = (props) => {
         <h2 className="rules__title">Правила</h2>
         <ul className="rules__description">
           <li>Угадай 10 раз для каждого изображения фото
-            <img className="rules__icon" src="img/icon-photo.png" width="32" height="31" alt="Фото"/> или рисунок
-            <img className="rules__icon" src="img/icon-paint.png" width="32" height="31" alt="Рисунок"/>
+            <img className="rules__icon" src={imgIconPhoto} width="32" height="31" alt="Фото"/> или рисунок
+            <img className="rules__icon" src={imgIconPaint} width="32" height="31" alt="Рисунок"/>
           </li>
           <li>Фотографиями или рисунками могут быть оба изображения.</li>
           <li>На каждую попытку отводится 30 секунд.</li>
