@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
   },
   {
-    "revision": "17156fa3b090da60c8a6",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.43ef383c.chunk.css"
+    "revision": "d2201a5d3c320d338479",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.6de8aef1.chunk.css"
   },
   {
-    "revision": "1a02ec3d449f5f5e2f3d",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.1a02ec3d.chunk.js"
+    "revision": "76d4d91a67dbe0fd7b7c",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.76d4d91a.chunk.js"
   },
   {
     "revision": "26faf38a24897238bf65",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotobold.add4cae3.woff2"
   },
   {
-    "revision": "17156fa3b090da60c8a6",
-    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.17156fa3.chunk.js"
+    "revision": "d2201a5d3c320d338479",
+    "url": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.d2201a5d.chunk.js"
   },
   {
     "revision": "400c14541b7297a097e57cc8f271f8a5",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "https://regulyarniy.github.io/react-pixel-hunter/static/media/egg_big.ee652214.png"
   },
   {
-    "revision": "fdf865245ae19363c266402ce8e09f96",
+    "revision": "59c96c12a1f14a78851156e967d45c48",
     "url": "https://regulyarniy.github.io/react-pixel-hunter/index.html"
   }
 ];
