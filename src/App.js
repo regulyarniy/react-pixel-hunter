@@ -9,6 +9,7 @@ import Stats from "./components/stats/stats";
 import ModalError from "./components/modal/modal-error";
 import ModalConfirm from "./components/modal/modal-confirm";
 import Footer from "./components/footer/footer";
+import getQuestions from "./services/get-questions";
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,16 @@ class App extends Component {
     this.screens = [Intro, Welcome, Rules, GameOne, GameTwo, GameThree, Stats, ModalError, ModalConfirm];
     this.state = {
       currentScreen: 0,
+      questions: null,
+      errorText: null
     };
+    getQuestions((result, error) => {
+      if (result === -1) {
+        this.setState({errorText: error});
+      } else {
+        this.setState({questions: result});
+      }
+    }).then();
   }
 
   render() {
@@ -31,11 +41,14 @@ class App extends Component {
   }
 
   renderScreen() {
+    const {questions, errorText} = this.state;
     switch (this.state.currentScreen) {
       case 0:
         return <Intro
           handleSwitchToNextScreen={() => this.switchToNextScreen()}
           handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+          questions={questions}
+          errorText={errorText}
         />;
       case 1:
         return <Welcome
