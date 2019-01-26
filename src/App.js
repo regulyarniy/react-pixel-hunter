@@ -2,19 +2,15 @@ import React, {Component, Fragment} from 'react';
 import Intro from './components/intro/intro';
 import Welcome from './components/welcome/welcome';
 import Rules from './components/rules/rules';
-import GameOne from "./components/game/game-one";
-import GameTwo from "./components/game/game-two";
-import GameThree from "./components/game/game-three";
+import Game from "./components/game/game";
 import Stats from "./components/stats/stats";
-import ModalError from "./components/modal/modal-error";
-import ModalConfirm from "./components/modal/modal-confirm";
 import Footer from "./components/footer/footer";
 import getQuestions from "./services/get-questions";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.screens = [Intro, Welcome, Rules, GameOne, GameTwo, GameThree, Stats, ModalError, ModalConfirm];
+    this.screens = [Intro, Welcome, Rules, Game, Stats];
     this.state = {
       currentScreen: 0,
       questions: null,
@@ -61,26 +57,13 @@ class App extends Component {
           handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
         />;
       case 3:
-        return <GameOne
+        return <Game
           handleSwitchToNextScreen={() => this.switchToNextScreen()}
           handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
+          questions={this.state.questions}
         />;
       case 4:
-        return <GameTwo
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-        />;
-      case 5:
-        return <GameThree
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-        />;
-      case 6:
         return <Stats handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}/>;
-      case 7:
-        return <ModalError />;
-      case 8:
-        return <ModalConfirm />;
       default:
         return null;
     }
