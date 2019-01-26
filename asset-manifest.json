@@ -1,15 +1,15 @@
 {
-  "main.css": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.6de8aef1.chunk.css",
-  "main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.d2201a5d.chunk.js",
-  "main.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.d2201a5d.chunk.js.map",
-  "static/js/1.76d4d91a.chunk.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.76d4d91a.chunk.js",
-  "static/js/1.76d4d91a.chunk.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.76d4d91a.chunk.js.map",
+  "main.css": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.800cd89f.chunk.css",
+  "main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.6b155c2c.chunk.js",
+  "main.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.6b155c2c.chunk.js.map",
+  "static/js/1.e2735a18.chunk.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.e2735a18.chunk.js",
+  "static/js/1.e2735a18.chunk.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.e2735a18.chunk.js.map",
   "runtime~main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/runtime~main.26faf38a.js",
   "runtime~main.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/runtime~main.26faf38a.js.map",
   "static/media/sprite.svg": "https://regulyarniy.github.io/react-pixel-hunter/static/media/sprite.b434b7c8.svg",
   "static/media/style.scss": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotobold.add4cae3.woff2",
-  "static/css/main.6de8aef1.chunk.css.map": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.6de8aef1.chunk.css.map",
+  "static/css/main.800cd89f.chunk.css.map": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.800cd89f.chunk.css.map",
   "index.html": "https://regulyarniy.github.io/react-pixel-hunter/index.html",
-  "precache-manifest.fc2cf8b9bdbb6652535b843166eee54a.js": "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.fc2cf8b9bdbb6652535b843166eee54a.js",
+  "precache-manifest.d742594a33f94f244a8f78cb6ef7fede.js": "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.d742594a33f94f244a8f78cb6ef7fede.js",
   "service-worker.js": "https://regulyarniy.github.io/react-pixel-hunter/service-worker.js"
 }
