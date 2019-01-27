@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
-import Header from "../header/header";
+import Header from "../Header/Header";
 import imgIconPhoto from "../../img/icon-photo.png";
 import imgIconPaint from "../../img/icon-paint.png";
 
@@ -35,6 +35,11 @@ const Rules = (props) => {
 Rules.propTypes = {
   handleSwitchToNextScreen: PropTypes.func.isRequired,
   handleSwitchToWelcomeScreen: PropTypes.func.isRequired
+};
+
+Rules.defaultProps = {
+  handleSwitchToNextScreen: ()=>{},
+  handleSwitchToWelcomeScreen: ()=>{}
 };
 
 export default Rules;

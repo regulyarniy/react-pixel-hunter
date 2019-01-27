@@ -21,4 +21,34 @@ GameOfThree.propTypes = {
   answers: PropTypes.array.isRequired
 };
 
+GameOfThree.defaultProps = {
+  handleSwitchToNextQuestion: ()=>{},
+  answers: [
+    {
+      image: {
+        url: `http://i.imgur.com/rY9u55S.jpg`,
+        width: 304,
+        height: 455
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `http://i.imgur.com/ncXRs5Y.jpg`,
+        width: 304,
+        height: 455
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `https://k39.kn3.net/E07A38605.jpg`,
+        width: 304,
+        height: 455
+      },
+      type: `painting`
+    }
+  ]
+};
+
 export default GameOfThree;

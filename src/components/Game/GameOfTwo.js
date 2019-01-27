@@ -29,4 +29,26 @@ GameOfTwo.propTypes = {
   answers: PropTypes.array.isRequired
 };
 
+GameOfTwo.defaultProps = {
+  handleSwitchToNextQuestion: ()=>{},
+  answers: [
+    {
+      image: {
+        url: `http://i.imgur.com/UIHVp0P.jpg`,
+        width: 468,
+        height: 458
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `http://i.imgur.com/eSlWjE7.jpg`,
+        width: 468,
+        height: 458
+      },
+      type: `photo`
+    }
+  ]
+};
+
 export default GameOfTwo;

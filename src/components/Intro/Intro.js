@@ -20,4 +20,9 @@ Intro.propTypes = {
   questions: PropTypes.array
 };
 
+Intro.defaultProps = {
+  handleSwitchToNextScreen: ()=>{},
+  questions: [``]
+};
+
 export default Intro;

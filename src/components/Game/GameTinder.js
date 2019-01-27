@@ -24,4 +24,18 @@ GameTinder.propTypes = {
   answers: PropTypes.array.isRequired
 };
 
+GameTinder.defaultProps = {
+  handleSwitchToNextQuestion: ()=>{},
+  answers: [
+    {
+      image: {
+        url: `http://i.imgur.com/dWTKNtv.jpg`,
+        width: 705,
+        height: 455
+      },
+      type: `photo`
+    }
+  ]
+};
+
 export default GameTinder;

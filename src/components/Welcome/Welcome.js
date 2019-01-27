@@ -34,4 +34,8 @@ Welcome.propTypes = {
   handleSwitchToNextScreen: PropTypes.func.isRequired,
 };
 
+Welcome.defaultProps = {
+  handleSwitchToNextScreen: () => {}
+};
+
 export default Welcome;

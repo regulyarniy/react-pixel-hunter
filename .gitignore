@@ -16,3 +16,6 @@ build/
 
 # Webstorm config
 .idea
+
+# Jest
+coverage/

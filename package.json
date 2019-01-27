@@ -4,8 +4,8 @@
   "private": true,
   "description": "Личный проект «Пиксель хантер» от HTML Academy",
   "scripts": {
-    "eslint": "eslint ./gulpfile.js js/**/*.js",
-    "stylelint": "stylelint 'sass/**/*.scss' --syntax scss",
+    "eslint": "eslint src/**/*.js",
+    "stylelint": "stylelint 'src/sass/**/*.scss' --syntax scss",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"

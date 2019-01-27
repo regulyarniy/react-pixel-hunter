@@ -35,4 +35,9 @@ Header.propTypes = {
   handleSwitchToWelcomeScreen: PropTypes.func.isRequired
 };
 
+Header.defaultProps = {
+  isGameScreen: true,
+  handleSwitchToWelcomeScreen: ()=>{}
+};
+
 export default Header;

@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import Intro from './components/intro/intro';
-import Welcome from './components/welcome/welcome';
-import Rules from './components/rules/rules';
-import Game from "./components/game/game";
-import Stats from "./components/stats/stats";
-import Footer from "./components/footer/footer";
+import Intro from './components/Intro/Intro';
+import Welcome from './components/Welcome/Welcome';
+import Rules from './components/Rules/Rules';
+import Game from "./components/Game/Game";
+import Stats from "./components/Stats/Stats";
+import Footer from "./components/Footer/Footer";
 import getQuestions from "./services/get-questions";
 
 class App extends Component {

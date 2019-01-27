@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import Header from "../header/header";
+import Header from "../Header/Header";
 import PropTypes from "prop-types";
 
 const Stats = (props) => {
@@ -123,6 +123,10 @@ const Stats = (props) => {
 
 Stats.propTypes = {
   handleSwitchToWelcomeScreen: PropTypes.func.isRequired
+};
+
+Stats.defaultProps = {
+  handleSwitchToWelcomeScreen: () => {}
 };
 
 export default Stats;

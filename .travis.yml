@@ -5,10 +5,15 @@ node_js:
 
 preinstall: npm config set package-lock false
 
-script: npm run build
+script:
+  - npm run test
+  - npm run stylelint
+  - npm run eslint
 
 notifications:
   email: false
+
+before_deploy: npm run build
 
 deploy:
   provider: pages
