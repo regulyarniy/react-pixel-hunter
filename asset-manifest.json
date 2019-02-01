@@ -1,7 +1,7 @@
 {
   "main.css": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.2c7b92ed.chunk.css",
-  "main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.3ad5d28b.chunk.js",
-  "main.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.3ad5d28b.chunk.js.map",
+  "main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.1418cc92.chunk.js",
+  "main.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/main.1418cc92.chunk.js.map",
   "static/js/1.33261314.chunk.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.33261314.chunk.js",
   "static/js/1.33261314.chunk.js.map": "https://regulyarniy.github.io/react-pixel-hunter/static/js/1.33261314.chunk.js.map",
   "runtime~main.js": "https://regulyarniy.github.io/react-pixel-hunter/static/js/runtime~main.26faf38a.js",
@@ -10,6 +10,6 @@
   "static/media/style.scss": "https://regulyarniy.github.io/react-pixel-hunter/static/media/robotobold.add4cae3.woff2",
   "static/css/main.2c7b92ed.chunk.css.map": "https://regulyarniy.github.io/react-pixel-hunter/static/css/main.2c7b92ed.chunk.css.map",
   "index.html": "https://regulyarniy.github.io/react-pixel-hunter/index.html",
-  "precache-manifest.4f4529c7476f686493602ad295ce3eb2.js": "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.4f4529c7476f686493602ad295ce3eb2.js",
+  "precache-manifest.313a1e0b6b418cc58a40e44a6bdb0178.js": "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.313a1e0b6b418cc58a40e44a6bdb0178.js",
   "service-worker.js": "https://regulyarniy.github.io/react-pixel-hunter/service-worker.js"
 }
