@@ -38,7 +38,6 @@ class Game extends Component {
       <Fragment>
         <Header
           isGameScreen={true}
-          handleSwitchToWelcomeScreen={this.props.handleSwitchToWelcomeScreen}
         />
         <section className="game">
           <p className="game__task">{this.currentQuestionText}</p>
@@ -57,15 +56,13 @@ class Game extends Component {
     if (this.state.currentQuestion < this.questions.length - 1) {
       this.setState({currentQuestion: this.state.currentQuestion + 1});
     } else {
-      this.props.handleSwitchToWelcomeScreen();
+      this.props.history.push(`/stats`);
     }
   }
 }
 
 Game.propTypes = {
-  questions: PropTypes.array.isRequired,
-  handleSwitchToNextScreen: PropTypes.func.isRequired,
-  handleSwitchToWelcomeScreen: PropTypes.func.isRequired
+  questions: PropTypes.array.isRequired
 };
 
 Game.defaultProps = {
@@ -137,8 +134,7 @@ Game.defaultProps = {
       ]
     }
   ],
-  handleSwitchToNextScreen: ()=>{},
-  handleSwitchToWelcomeScreen: ()=>{}
+  handleSwitchToNextScreen: ()=>{}
 };
 
 export default Game;

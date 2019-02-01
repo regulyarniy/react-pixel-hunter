@@ -6,16 +6,16 @@ import Game from "./components/Game/Game";
 import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
 import getQuestions from "./services/get-questions";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.screens = [Intro, Welcome, Rules, Game, Stats];
     this.state = {
-      currentScreen: 0,
       questions: null,
       errorText: null
     };
+
     getQuestions((result, error) => {
       if (result === -1) {
         this.setState({errorText: error});
@@ -26,60 +26,45 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <main id="main" className="central">
-          {this.renderScreen()}
-        </main>
-        <Footer/>
-      </Fragment>
-    );
-  }
-
-  renderScreen() {
     const {questions, errorText} = this.state;
-    switch (this.state.currentScreen) {
-      case 0:
-        return <Intro
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-          questions={questions}
-          errorText={errorText}
-        />;
-      case 1:
-        return <Welcome
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-        />;
-      case 2:
-        return <Rules
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-        />;
-      case 3:
-        return <Game
-          handleSwitchToNextScreen={() => this.switchToNextScreen()}
-          handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}
-          questions={this.state.questions}
-        />;
-      case 4:
-        return <Stats handleSwitchToWelcomeScreen={() => this.switchToWelcomeScreen()}/>;
-      default:
-        return null;
-    }
-  }
-
-  switchToNextScreen() {
-    const nextScreenNumber = this.state.currentScreen + 1;
-    this.setState({
-      currentScreen: nextScreenNumber < this.screens.length ? nextScreenNumber : 0
-    });
-  }
-
-  switchToWelcomeScreen() {
-    this.setState({
-      currentScreen: 1
-    });
+    const sharedProps = {
+      questions,
+      errorText
+    };
+    return (
+      <Router>
+        <Fragment>
+          <main id="main" className="central">
+            <Route
+              path="/"
+              exact
+              component={(props) => <Intro {...props} {...sharedProps}/>}
+            />
+            <Route
+              path="/welcome"
+              exact
+              component={(props) => <Welcome {...props} {...sharedProps}/>}
+            />
+            <Route
+              path="/rules"
+              exact
+              component={(props) => <Rules {...props} {...sharedProps}/>}
+            />
+            <Route
+              path="/game"
+              exact
+              component={(props) => <Game {...props} {...sharedProps}/>}
+            />
+            <Route
+              path="/stats"
+              exact
+              component={(props) => <Stats {...props} {...sharedProps}/>}
+            />
+          </main>
+          <Route component={Footer}/>
+        </Fragment>
+      </Router>
+    );
   }
 }
 
