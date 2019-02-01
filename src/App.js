@@ -32,31 +32,31 @@ class App extends Component {
       errorText
     };
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Fragment>
           <main id="main" className="central">
             <Route
-              path={`${process.env.PUBLIC_URL}/`}
+              path="/"
               exact
               component={(props) => <Intro {...props} {...sharedProps}/>}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/welcome`}
+              path="/welcome"
               exact
               component={(props) => <Welcome {...props} {...sharedProps}/>}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/rules`}
+              path="/rules"
               exact
               component={(props) => <Rules {...props} {...sharedProps}/>}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/game`}
+              path="/game"
               exact
               component={(props) => <Game {...props} {...sharedProps}/>}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/stats`}
+              path="/stats"
               exact
               component={(props) => <Stats {...props} {...sharedProps}/>}
             />

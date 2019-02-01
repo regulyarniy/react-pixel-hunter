@@ -3,6 +3,7 @@
   "version": "5.0.0",
   "private": true,
   "description": "Личный проект «Пиксель хантер» от HTML Academy",
+  "homepage": "https://regulyarniy.github.io/react-pixel-hunter/",
   "scripts": {
     "eslint": "eslint src/**/*.js",
     "stylelint": "stylelint 'src/sass/**/*.scss' --syntax scss",
