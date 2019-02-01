@@ -32,7 +32,7 @@ class App extends Component {
       errorText
     };
     return (
-      <Router>
+      <Router basename={ process.env.PUBLIC_URL || ``}>
         <Fragment>
           <main id="main" className="central">
             <Route

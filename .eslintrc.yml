@@ -7,5 +7,9 @@ env:
   browser: true
   commonjs: true
   jest: true
+  node: true
+
+rules:
+  no-process-env: off
 
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
