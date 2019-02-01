@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://regulyarniy.github.io/react-pixel-hunter/precache-manifest.313a1e0b6b418cc58a40e44a6bdb0178.js"
+  "/react-pixel-hunter/precache-manifest.211efb1d5525f61957c3dd56eac31a8d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("https://regulyarniy.github.io/react-pixel-hunter/index.html", {
+workbox.routing.registerNavigationRoute("/react-pixel-hunter/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
