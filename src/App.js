@@ -7,13 +7,19 @@ import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
 import getQuestions from "./services/get-questions";
 import {BrowserRouter as Router, Route} from "react-router-dom";
+import Store from "./Store";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       questions: null,
-      errorText: null
+      errorText: null,
+      playerName: null
+    };
+
+    this.handlers = {
+      changeName: this._changeName.bind(this)
     };
 
     getQuestions((result, error) => {
@@ -26,46 +32,30 @@ class App extends Component {
   }
 
   render() {
-    const {questions, errorText} = this.state;
-    const sharedProps = {
-      questions,
-      errorText
-    };
+    const sharedData = Object.assign({}, this.state, this.handlers);
     return (
-      <Router basename={process.env.PUBLIC_URL}>
-        <Fragment>
-          <main id="main" className="central">
-            <Route
-              path="/"
-              exact
-              component={(props) => <Intro {...props} {...sharedProps}/>}
-            />
-            <Route
-              path="/welcome"
-              exact
-              component={(props) => <Welcome {...props} {...sharedProps}/>}
-            />
-            <Route
-              path="/rules"
-              exact
-              component={(props) => <Rules {...props} {...sharedProps}/>}
-            />
-            <Route
-              path="/game"
-              exact
-              component={(props) => <Game {...props} {...sharedProps}/>}
-            />
-            <Route
-              path="/stats"
-              exact
-              component={(props) => <Stats {...props} {...sharedProps}/>}
-            />
-          </main>
-          <Route component={Footer}/>
-        </Fragment>
-      </Router>
+      <Store.Provider value={sharedData}>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Fragment>
+            <main id="main" className="central">
+              <Route path="/" exact component={Intro}/>
+              <Route path="/welcome" exact component={Welcome}/>
+              <Route path="/rules" exact component={Rules}/>
+              <Route path="/game" exact component={Game}/>
+              <Route path="/stats" exact component={Stats}/>
+            </main>
+            <Route component={Footer}/>
+          </Fragment>
+        </Router>
+      </Store.Provider>
     );
   }
+
+  _changeName(newName) {
+    this.setState({name: newName});
+  }
 }
+
+App.contextType = Store;
 
 export default App;

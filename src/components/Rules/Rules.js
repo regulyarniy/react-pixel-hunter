@@ -3,18 +3,20 @@ import PropTypes from "prop-types";
 import Header from "../Header/Header";
 import imgIconPhoto from "../../img/icon-photo.png";
 import imgIconPaint from "../../img/icon-paint.png";
+import Store from "../../Store";
 
 class Rules extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      playerName: ``
+    };
   }
 
   render() {
     return (
       <Fragment>
-        <Header
-          isGameScreen={false}
-        />
+        <Header isGameScreen={false}/>
         <section className="rules">
           <h2 className="rules__title">Правила</h2>
           <ul className="rules__description">
@@ -28,16 +30,30 @@ class Rules extends Component {
           </ul>
           <p className="rules__ready">Готовы?</p>
           <form className="rules__form" onSubmit={this.handleSubmit.bind(this)}>
-            <input className="rules__input" type="text" placeholder="Ваше Имя"/>
-            <button className="rules__button  continue" type="submit">Go!</button>
+            <input
+              className="rules__input"
+              type="text"
+              placeholder="Ваше Имя"
+              value={this.state.playerName}
+              onChange={this.handleChange.bind(this)}/>
+            <button
+              className="rules__button  continue"
+              type="submit"
+              disabled={!this.state.playerName}
+            >Go!</button>
           </form>
         </section>
       </Fragment>
     );
   }
 
+  handleChange(event) {
+    this.setState({playerName: event.target.value});
+  }
+
   handleSubmit(event) {
     event.preventDefault();
+    this.context.changeName(this.state.playerName);
     this.props.history.push(`/game`);
   }
 
@@ -50,5 +66,7 @@ Rules.propTypes = {
 Rules.defaultProps = {
   history: {push: ()=>{}}
 };
+
+Rules.contextType = Store;
 
 export default Rules;
