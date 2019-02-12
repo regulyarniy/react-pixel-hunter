@@ -7,6 +7,7 @@ import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
 import getQuestions from "./services/get-questions";
 import {BrowserRouter as Router, Route} from "react-router-dom";
+import {Timer} from "./constants/constants";
 import Store from "./Store";
 
 class App extends Component {
@@ -15,11 +16,16 @@ class App extends Component {
     this.state = {
       questions: null,
       errorText: null,
-      playerName: null
+      playerName: null,
+      timeLeft: Timer.START_VALUE.toString(),
     };
 
+    this._timer = Timer.START_VALUE;
+    this._ticker = null;
+
     this.handlers = {
-      changeName: this._changeName.bind(this)
+      changeName: this._changeName.bind(this),
+      resetTimer: this._resetTimer.bind(this)
     };
 
     getQuestions((result, error) => {
@@ -53,6 +59,28 @@ class App extends Component {
 
   _changeName(newName) {
     this.setState({name: newName});
+  }
+
+  _tick() {
+    this._timer = this._timer - Timer.DECREMENT;
+    this._ticker = setTimeout(() => {
+      this.setState({
+        timeLeft: this._timer < Timer.STRING_SHIFT
+          ? `0${this._timer}`
+          : `${this._timer}`,
+      });
+      if (this._timer === Timer.STOP_VALUE) {
+        return;
+      }
+      this._tick();
+    }, Timer.INTERVAL);
+  }
+
+  _resetTimer() {
+    clearTimeout(this._ticker);
+    this.setState({timeLeft: Timer.START_VALUE.toString()});
+    this._timer = Timer.START_VALUE;
+    this._tick();
   }
 }
 

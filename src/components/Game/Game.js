@@ -7,6 +7,7 @@ import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
 import {API} from "../../constants/constants";
 const {GameTypes} = API;
+import Store from "../../Store";
 
 class Game extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class Game extends Component {
 
   get currentQuestionAnswers() {
     return this.questions[this.state.currentQuestion].answers;
+  }
+
+  componentDidMount() {
+    this.context.resetTimer();
   }
 
   render() {
@@ -55,11 +60,14 @@ class Game extends Component {
   switchToNextQuestion() {
     if (this.state.currentQuestion < this.questions.length - 1) {
       this.setState({currentQuestion: this.state.currentQuestion + 1});
+      this.context.resetTimer();
     } else {
       this.props.history.push(`/stats`);
     }
   }
 }
+
+Game.contextType = Store;
 
 Game.propTypes = {
   questions: PropTypes.array.isRequired

@@ -4,9 +4,9 @@ import imgHeartEmpty from "../../img/heart__empty.svg";
 import imgHearFull from "../../img/heart__full.svg";
 import sprite from "../../img/sprite.svg";
 import {Link} from "react-router-dom";
+import Store from "../../Store";
 
 const Header = (props) => {
-  const timerIndicator = <div className="game__timer">NN</div>;
   const livesIndicator = (
     <div className="game__lives">
       <img src={imgHeartEmpty} className="game__heart" alt=" Missed Life" width="31" height="27"/>
@@ -27,18 +27,20 @@ const Header = (props) => {
           </svg>
         </button>
       </Link>
-      {props.isGameScreen ? timerIndicator : null}
+      <Store.Consumer>
+        {({timeLeft}) => props.isGameScreen ? <div className="game__timer">{timeLeft}</div> : null}
+      </Store.Consumer>
       {props.isGameScreen ? livesIndicator : null}
     </header>
   );
 };
 
 Header.propTypes = {
-  isGameScreen: PropTypes.bool.isRequired
+  isGameScreen: PropTypes.bool.isRequired,
 };
 
 Header.defaultProps = {
-  isGameScreen: true
+  isGameScreen: true,
 };
 
 export default Header;
