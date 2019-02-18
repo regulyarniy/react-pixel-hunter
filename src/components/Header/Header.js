@@ -4,7 +4,7 @@ import imgHeartEmpty from "../../img/heart__empty.svg";
 import imgHearFull from "../../img/heart__full.svg";
 import sprite from "../../img/sprite.svg";
 import {Link} from "react-router-dom";
-import Store from "../../Store";
+import Context from "../../context";
 
 const Header = (props) => {
   const livesIndicator = (
@@ -27,9 +27,9 @@ const Header = (props) => {
           </svg>
         </button>
       </Link>
-      <Store.Consumer>
+      <Context.Consumer>
         {({timeLeft}) => props.isGameScreen ? <div className="game__timer">{timeLeft}</div> : null}
-      </Store.Consumer>
+      </Context.Consumer>
       {props.isGameScreen ? livesIndicator : null}
     </header>
   );

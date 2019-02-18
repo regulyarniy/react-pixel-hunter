@@ -5,10 +5,20 @@ import Rules from './components/Rules/Rules';
 import Game from "./components/Game/Game";
 import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
-import getQuestions from "./services/get-questions";
+// import getQuestions from "./services/get-questions";
+import PropTypes from "prop-types";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Timer} from "./constants/constants";
-import Store from "./Store";
+import Context from "./context.js";
+import {connect} from "react-redux";
+import {operations} from "./store/index";
+
+const mapStateToProps = (state) => {
+  return {
+    questions: state.questions,
+    errorText: state.error
+  };
+};
 
 class App extends Component {
   constructor(props) {
@@ -27,20 +37,17 @@ class App extends Component {
       changeName: this._changeName.bind(this),
       resetTimer: this._resetTimer.bind(this)
     };
+  }
 
-    getQuestions((result, error) => {
-      if (result === -1) {
-        this.setState({errorText: error});
-      } else {
-        this.setState({questions: result});
-      }
-    }).then();
+  componentDidMount() {
+    this.props.dispatch(operations.getQuestions());
+    this.setState({questions: this.props.questions});
   }
 
   render() {
     const sharedData = Object.assign({}, this.state, this.handlers);
     return (
-      <Store.Provider value={sharedData}>
+      <Context.Provider value={sharedData}>
         <Router basename={process.env.PUBLIC_URL}>
           <Fragment>
             <main id="main" className="central">
@@ -53,7 +60,7 @@ class App extends Component {
             <Route component={Footer}/>
           </Fragment>
         </Router>
-      </Store.Provider>
+      </Context.Provider>
     );
   }
 
@@ -84,6 +91,11 @@ class App extends Component {
   }
 }
 
-App.contextType = Store;
+App.contextType = Context;
 
-export default App;
+App.propTypes = {
+  dispatch: PropTypes.func,
+  questions: PropTypes.array
+};
+
+export default connect(mapStateToProps)(App);

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "../Header/Header";
 import imgIconPhoto from "../../img/icon-photo.png";
 import imgIconPaint from "../../img/icon-paint.png";
-import Store from "../../Store";
+import Context from "../../context";
 
 class Rules extends Component {
   constructor(props) {
@@ -67,6 +67,6 @@ Rules.defaultProps = {
   history: {push: ()=>{}}
 };
 
-Rules.contextType = Store;
+Rules.contextType = Context;
 
 export default Rules;

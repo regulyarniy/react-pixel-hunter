@@ -7,7 +7,7 @@ import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
 import {API} from "../../constants/constants";
 const {GameTypes} = API;
-import Store from "../../Store";
+import Context from "../../context";
 
 class Game extends Component {
   constructor(props) {
@@ -67,7 +67,7 @@ class Game extends Component {
   }
 }
 
-Game.contextType = Store;
+Game.contextType = Context;
 
 Game.propTypes = {
   questions: PropTypes.array.isRequired

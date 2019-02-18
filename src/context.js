@@ -9,6 +9,6 @@ const defaultValue = {
   resetTimer: () => {}
 };
 
-const Store = React.createContext(defaultValue);
+const Context = React.createContext(defaultValue);
 
-export default Store;
+export default Context;
