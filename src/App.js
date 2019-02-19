@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
