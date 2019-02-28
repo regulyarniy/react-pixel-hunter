@@ -1,6 +1,11 @@
 parserOptions:
   ecmaVersion: 2018
   sourceType: 'module'
+  allowImportExportEverywhere: true
+
+settings:
+  react:
+    version: 'detect'
 
 env:
   es6: true
