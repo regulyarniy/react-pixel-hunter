@@ -3,6 +3,7 @@ import Types from './types';
 const INITIAL_STATE = {
   questions: [],
   error: null,
+  name: ``,
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -14,10 +15,16 @@ const appReducer = (state = INITIAL_STATE, action) => {
         questions: action.payload.questions,
       };
 
-    case Types.FAIL_REQUEST:
+    case Types.ERROR_SET:
       return {
         ...state,
         error: action.payload.error,
+      };
+
+    case Types.NAME_SET:
+      return {
+        ...state,
+        name: action.payload.name,
       };
 
     default:

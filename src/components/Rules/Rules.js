@@ -1,16 +1,23 @@
-import React, {Fragment, Component} from 'react';
+import React, {Fragment, PureComponent} from 'react';
 import PropTypes from "prop-types";
 import Header from "../Header/Header";
 import imgIconPhoto from "../../img/icon-photo.png";
 import imgIconPaint from "../../img/icon-paint.png";
-import Context from "../../context";
 
-class Rules extends Component {
+class Rules extends PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
-      playerName: ``
+      name: ``
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({name: this.props.name});
   }
 
   render() {
@@ -29,17 +36,17 @@ class Rules extends Component {
             <li>Ошибиться можно не более 3 раз.</li>
           </ul>
           <p className="rules__ready">Готовы?</p>
-          <form className="rules__form" onSubmit={this.handleSubmit.bind(this)}>
+          <form className="rules__form" onSubmit={this.handleSubmit}>
             <input
               className="rules__input"
               type="text"
               placeholder="Ваше Имя"
-              value={this.state.playerName}
-              onChange={this.handleChange.bind(this)}/>
+              value={this.state.name}
+              onChange={this.handleChange}/>
             <button
               className="rules__button  continue"
               type="submit"
-              disabled={!this.state.playerName}
+              disabled={!this.state.name}
             >Go!</button>
           </form>
         </section>
@@ -48,25 +55,21 @@ class Rules extends Component {
   }
 
   handleChange(event) {
-    this.setState({playerName: event.target.value});
+    this.setState({name: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.context.changeName(this.state.playerName);
+    this.props.onSetName(this.state.name);
     this.props.history.push(`/game`);
   }
 
 }
 
 Rules.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object,
+  onSetName: PropTypes.func,
+  name: PropTypes.string
 };
-
-Rules.defaultProps = {
-  history: {push: ()=>{}}
-};
-
-Rules.contextType = Context;
 
 export default Rules;

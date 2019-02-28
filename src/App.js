@@ -5,7 +5,6 @@ import Rules from './components/Rules/Rules';
 import Game from "./components/Game/Game";
 import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
-// import getQuestions from "./services/get-questions";
 import PropTypes from "prop-types";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Timer} from "./constants/constants";
@@ -16,7 +15,15 @@ import {operations} from "./store/index";
 const mapStateToProps = (state) => {
   return {
     questions: state.questions,
-    errorText: state.error
+    errorText: state.error,
+    name: state.name
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getQuestions: () => dispatch(operations.getQuestions()),
+    setName: (name) => dispatch(operations.setName(name))
   };
 };
 
@@ -26,7 +33,6 @@ export class App extends Component {
     this.state = {
       questions: null,
       errorText: null,
-      playerName: null,
       timeLeft: Timer.START_VALUE.toString(),
     };
 
@@ -34,18 +40,18 @@ export class App extends Component {
     this._ticker = null;
 
     this.handlers = {
-      changeName: this._changeName.bind(this),
       resetTimer: this._resetTimer.bind(this)
     };
   }
 
   componentDidMount() {
-    this.props.dispatch(operations.getQuestions());
+    this.props.getQuestions();
     this.setState({questions: this.props.questions});
   }
 
   render() {
     const sharedData = Object.assign({}, this.state, this.handlers);
+    const {setName, name} = this.props;
     return (
       <Context.Provider value={sharedData}>
         <Router basename={process.env.PUBLIC_URL}>
@@ -53,7 +59,7 @@ export class App extends Component {
             <main id="main" className="central">
               <Route path="/" exact component={Intro}/>
               <Route path="/welcome" exact component={Welcome}/>
-              <Route path="/rules" exact component={Rules}/>
+              <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
               <Route path="/game" exact component={Game}/>
               <Route path="/stats" exact component={Stats}/>
             </main>
@@ -62,10 +68,6 @@ export class App extends Component {
         </Router>
       </Context.Provider>
     );
-  }
-
-  _changeName(newName) {
-    this.setState({name: newName});
   }
 
   _tick() {
@@ -94,8 +96,10 @@ export class App extends Component {
 App.contextType = Context;
 
 App.propTypes = {
-  dispatch: PropTypes.func,
-  questions: PropTypes.array
+  questions: PropTypes.array,
+  getQuestions: PropTypes.func,
+  setName: PropTypes.func,
+  name: PropTypes.string
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

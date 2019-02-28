@@ -4,10 +4,12 @@ import {App} from './App';
 import {MemoryRouter} from "react-router-dom";
 
 describe(`App component`, () => {
-  const mockFn = jest.fn();
+  const mockProps = {
+    getQuestions: jest.fn(),
+  };
 
   it(`renders without crashing`, () => {
     const div = document.createElement(`div`);
-    ReactDOM.render(<MemoryRouter><App dispatch={mockFn}/></MemoryRouter>, div);
+    ReactDOM.render(<MemoryRouter><App {...mockProps}/></MemoryRouter>, div);
   });
 });

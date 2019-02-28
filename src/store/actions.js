@@ -3,18 +3,26 @@ import Type from './types';
 const requestQuestions = (questions) => ({
   type: Type.REQUEST_QUESTIONS,
   payload: {
-    questions
+    questions,
+  },
+});
+
+const setName = (name) => ({
+  type: Type.NAME_SET,
+  payload: {
+    name
   }
 });
 
-const failRequest = (error) => ({
-  type: Type.FAIL_REQUEST,
+const setError = (error) => ({
+  type: Type.ERROR_SET,
   payload: {
-    error
-  }
+    error,
+  },
 });
 
 export default {
   requestQuestions,
-  failRequest
+  setError,
+  setName
 };
