@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import GameOfThree from "./GameOfThree";
 import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
-import {API} from "../../constants/constants";
+import {API, Timer} from "../../constants/constants";
 const {GameTypes} = API;
 import Context from "../../context";
 
@@ -14,8 +14,12 @@ class Game extends Component {
     super(props);
     this.questions = this.props.questions;
     this.state = {
-      currentQuestion: 0
+      currentQuestion: 0,
+      timeLeft: Timer.START_VALUE.toString(),
     };
+
+    this._timer = Timer.START_VALUE;
+    this._ticker = null;
   }
 
   get currentQuestionType() {
@@ -31,8 +35,13 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this.context.resetTimer();
+    this._resetTimer();
   }
+
+  componentWillUnmount() {
+    clearTimeout(this._ticker);
+  }
+
 
   render() {
     const gameProps = {
@@ -43,6 +52,7 @@ class Game extends Component {
       <Fragment>
         <Header
           isGameScreen={true}
+          timeLeft={this.state.timeLeft}
         />
         <section className="game">
           <p className="game__task">{this.currentQuestionText}</p>
@@ -60,10 +70,32 @@ class Game extends Component {
   switchToNextQuestion() {
     if (this.state.currentQuestion < this.questions.length - 1) {
       this.setState({currentQuestion: this.state.currentQuestion + 1});
-      this.context.resetTimer();
+      this._resetTimer();
     } else {
       this.props.history.push(`/stats`);
     }
+  }
+
+  _tick() {
+    this._timer = this._timer - Timer.DECREMENT;
+    this._ticker = setTimeout(() => {
+      this.setState({
+        timeLeft: this._timer < Timer.STRING_SHIFT
+          ? `0${this._timer}`
+          : `${this._timer}`,
+      });
+      if (this._timer === Timer.STOP_VALUE) {
+        return;
+      }
+      this._tick();
+    }, Timer.INTERVAL);
+  }
+
+  _resetTimer() {
+    clearTimeout(this._ticker);
+    this.setState({timeLeft: Timer.START_VALUE.toString()});
+    this._timer = Timer.START_VALUE;
+    this._tick();
   }
 }
 

@@ -7,7 +7,6 @@ import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
 import PropTypes from "prop-types";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import {Timer} from "./constants/constants";
 import Context from "./context.js";
 import {connect} from "react-redux";
 import {operations} from "./store/index";
@@ -33,14 +32,6 @@ export class App extends Component {
     this.state = {
       questions: null,
       errorText: null,
-      timeLeft: Timer.START_VALUE.toString(),
-    };
-
-    this._timer = Timer.START_VALUE;
-    this._ticker = null;
-
-    this.handlers = {
-      resetTimer: this._resetTimer.bind(this)
     };
   }
 
@@ -50,7 +41,7 @@ export class App extends Component {
   }
 
   render() {
-    const sharedData = Object.assign({}, this.state, this.handlers);
+    const sharedData = Object.assign({}, this.state);
     const {setName, name} = this.props;
     return (
       <Context.Provider value={sharedData}>
@@ -68,28 +59,6 @@ export class App extends Component {
         </Router>
       </Context.Provider>
     );
-  }
-
-  _tick() {
-    this._timer = this._timer - Timer.DECREMENT;
-    this._ticker = setTimeout(() => {
-      this.setState({
-        timeLeft: this._timer < Timer.STRING_SHIFT
-          ? `0${this._timer}`
-          : `${this._timer}`,
-      });
-      if (this._timer === Timer.STOP_VALUE) {
-        return;
-      }
-      this._tick();
-    }, Timer.INTERVAL);
-  }
-
-  _resetTimer() {
-    clearTimeout(this._ticker);
-    this.setState({timeLeft: Timer.START_VALUE.toString()});
-    this._timer = Timer.START_VALUE;
-    this._tick();
   }
 }
 
