@@ -7,7 +7,6 @@ import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
 import {API, Timer} from "../../constants/constants";
 const {GameTypes} = API;
-import Context from "../../context";
 
 class Game extends Component {
   constructor(props) {
@@ -98,8 +97,6 @@ class Game extends Component {
     this._tick();
   }
 }
-
-Game.contextType = Context;
 
 Game.propTypes = {
   questions: PropTypes.array.isRequired

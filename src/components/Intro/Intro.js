@@ -1,24 +1,24 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Context from "../../context";
+import PropTypes from "prop-types";
 
-const Intro = () => {
+const Intro = ({isQuestionsLoaded}) => {
   return (
-
     <section className="intro">
       <Link to="/welcome">
-        <Context.Consumer>
-          {({questions}) => (
-            <button className="intro__asterisk asterisk asterisk--loading"
-              type="button"
-              disabled={!questions}
-            ><span className="visually-hidden">Продолжить</span>*
-            </button>)}
-        </Context.Consumer>
+        <button className="intro__asterisk asterisk asterisk--loading"
+          type="button"
+          disabled={!isQuestionsLoaded}
+        >
+          <span className="visually-hidden">Продолжить</span>*
+        </button>
       </Link>
-      <p className="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf
-      Sparnaay.</p>
+      <p className="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста
+        Tjalf
+        Sparnaay.</p>
     </section>);
 };
+
+Intro.propTypes = PropTypes.boolean;
 
 export default Intro;

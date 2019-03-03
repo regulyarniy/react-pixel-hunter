@@ -6,6 +6,7 @@ import {MemoryRouter} from "react-router-dom";
 describe(`App component`, () => {
   const mockProps = {
     getQuestions: jest.fn(),
+    questions: []
   };
 
   it(`renders without crashing`, () => {

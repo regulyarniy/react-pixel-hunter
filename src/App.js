@@ -7,7 +7,6 @@ import Stats from "./components/Stats/Stats";
 import Footer from "./components/Footer/Footer";
 import PropTypes from "prop-types";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Context from "./context.js";
 import {connect} from "react-redux";
 import {operations} from "./store/index";
 
@@ -27,42 +26,30 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: null,
-      errorText: null,
-    };
-  }
-
   componentDidMount() {
     this.props.getQuestions();
     this.setState({questions: this.props.questions});
   }
 
   render() {
-    const sharedData = Object.assign({}, this.state);
-    const {setName, name} = this.props;
+    const {setName, name, questions} = this.props;
+    const isQuestionsLoaded = questions.length !== 0;
     return (
-      <Context.Provider value={sharedData}>
-        <Router basename={process.env.PUBLIC_URL}>
-          <Fragment>
-            <main id="main" className="central">
-              <Route path="/" exact component={Intro}/>
-              <Route path="/welcome" exact component={Welcome}/>
-              <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
-              <Route path="/game" exact component={Game}/>
-              <Route path="/stats" exact component={Stats}/>
-            </main>
-            <Route component={Footer}/>
-          </Fragment>
-        </Router>
-      </Context.Provider>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Fragment>
+          <main id="main" className="central">
+            <Route path="/" exact render={() => <Intro isQuestionsLoaded={isQuestionsLoaded} />}/>
+            <Route path="/welcome" exact component={Welcome}/>
+            <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
+            <Route path="/game" exact component={Game}/>
+            <Route path="/stats" exact component={Stats}/>
+          </main>
+          <Route component={Footer}/>
+        </Fragment>
+      </Router>
     );
   }
 }
-
-App.contextType = Context;
 
 App.propTypes = {
   questions: PropTypes.array,
