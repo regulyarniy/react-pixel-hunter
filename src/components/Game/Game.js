@@ -12,14 +12,14 @@ const {GameTypes} = API;
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.questions = this.props.questions;
     this.state = {
       currentQuestion: 0,
       timeLeft: Timer.START_VALUE.toString(),
     };
 
-    this._timer = Timer.START_VALUE;
-    this._ticker = null;
+    this.questions = this.props.questions;
+    this.timer = Timer.START_VALUE;
+    this.ticker = null;
   }
 
   get currentQuestionType() {
@@ -35,11 +35,11 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this._resetTimer();
+    this.resetTimer();
   }
 
   componentWillUnmount() {
-    clearTimeout(this._ticker);
+    clearTimeout(this.ticker);
   }
 
 
@@ -72,37 +72,40 @@ class Game extends Component {
   switchToNextQuestion() {
     if (this.state.currentQuestion < this.questions.length - 1) {
       this.setState({currentQuestion: this.state.currentQuestion + 1});
-      this._resetTimer();
+      this.resetTimer();
     } else {
       this.props.history.push(`/stats`);
     }
   }
 
-  _tick() {
-    this._timer = this._timer - Timer.DECREMENT;
-    this._ticker = setTimeout(() => {
+  tick() {
+    this.timer = this.timer - Timer.DECREMENT;
+    this.ticker = setTimeout(() => {
       this.setState({
-        timeLeft: this._timer < Timer.STRING_SHIFT
-          ? `0${this._timer}`
-          : `${this._timer}`,
+        timeLeft: this.timer < Timer.STRING_SHIFT
+          ? `0${this.timer}`
+          : `${this.timer}`,
       });
-      if (this._timer === Timer.STOP_VALUE) {
+      if (this.timer === Timer.STOP_VALUE) {
+        this.props.onAddAnswer({isValid: false, timeLeft: Timer.STOP_VALUE});
+        this.switchToNextQuestion();
         return;
       }
-      this._tick();
+      this.tick();
     }, Timer.INTERVAL);
   }
 
-  _resetTimer() {
-    clearTimeout(this._ticker);
+  resetTimer() {
+    clearTimeout(this.ticker);
     this.setState({timeLeft: Timer.START_VALUE.toString()});
-    this._timer = Timer.START_VALUE;
-    this._tick();
+    this.timer = Timer.START_VALUE;
+    this.tick();
   }
 }
 
 Game.propTypes = {
   questions: PropTypes.array.isRequired,
+  addAnswer: PropTypes.func,
 };
 
 Game.defaultProps = {

@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getQuestions: () => dispatch(operations.getQuestions()),
     setName: (name) => dispatch(operations.setName(name)),
+    addAnswer: (answer) => dispatch(operations.addAnswer(answer)),
   };
 };
 
@@ -32,7 +33,7 @@ export class App extends Component {
   }
 
   render() {
-    const {setName, name, questions} = this.props;
+    const {setName, name, questions, addAnswer} = this.props;
     const isQuestionsLoaded = questions.length !== 0;
     return (
       <Router basename={process.env.PUBLIC_URL}>
@@ -40,7 +41,7 @@ export class App extends Component {
           <Route path="/" exact render={() => <Intro isQuestionsLoaded={isQuestionsLoaded}/>}/>
           <Route path="/welcome" exact component={Welcome}/>
           <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
-          <Route path="/game" exact component={Game}/>
+          <Route path="/game" exact render={(props) => <Game onAddAnswer={addAnswer} {...props}/>}/>
           <Route path="/stats" exact component={Stats}/>
           <Footer/>
         </Fragment>
@@ -54,6 +55,7 @@ App.propTypes = {
   getQuestions: PropTypes.func,
   setName: PropTypes.func,
   name: PropTypes.string,
+  addAnswer: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

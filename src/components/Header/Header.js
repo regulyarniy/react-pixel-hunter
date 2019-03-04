@@ -1,18 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imgHeartEmpty from "../../img/heart__empty.svg";
-import imgHearFull from "../../img/heart__full.svg";
+import imgHeartFull from "../../img/heart__full.svg";
 import sprite from "../../img/sprite.svg";
 import {Link} from "react-router-dom";
+import {Timer} from "../../constants/constants";
 
 const Header = ({isGameScreen, timeLeft}) => {
   const livesIndicator = (
     <div className="game__lives">
       <img src={imgHeartEmpty} className="game__heart" alt=" Missed Life" width="31" height="27"/>
-      <img src={imgHearFull} className="game__heart" alt="Life" width="31" height="27"/>
-      <img src={imgHearFull} className="game__heart" alt="Life" width="31" height="27"/>
+      <img src={imgHeartFull} className="game__heart" alt="Life" width="31" height="27"/>
+      <img src={imgHeartFull} className="game__heart" alt="Life" width="31" height="27"/>
     </div>
   );
+  const timerClass = timeLeft <= Timer.BLINK_START ? `game__timer game__timer--blink` : `game__timer`;
+  const timer = isGameScreen ? <div className={timerClass}>{timeLeft}</div> : null;
+  const lives = isGameScreen ? livesIndicator : null;
   return (
     <header className="header">
       <Link to="/welcome">
@@ -26,8 +30,8 @@ const Header = ({isGameScreen, timeLeft}) => {
           </svg>
         </button>
       </Link>
-      {isGameScreen ? <div className="game__timer">{timeLeft}</div> : null}
-      {isGameScreen ? livesIndicator : null}
+      {timer}
+      {lives}
     </header>
   );
 };

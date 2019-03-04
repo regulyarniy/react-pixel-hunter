@@ -13,5 +13,6 @@ export const Timer = {
   START_VALUE: 30,
   STOP_VALUE: 0,
   DECREMENT: 1, // value*inverval ms
-  STRING_SHIFT: 10 //
+  STRING_SHIFT: 10, // correction for string format
+  BLINK_START: 5 // second when timer starts blinking
 };

@@ -16,6 +16,11 @@
   @include bold-text;
   font-size: 60px;
   line-height: 45px;
+
+  &--blink {
+    animation: blink 0.5s infinite;
+    color: $main-red-color;
+  }
 }
 
 .game__task {
