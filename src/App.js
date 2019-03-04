@@ -41,7 +41,7 @@ export class App extends Component {
           <Route path="/" exact render={() => <Intro isQuestionsLoaded={isQuestionsLoaded}/>}/>
           <Route path="/welcome" exact component={Welcome}/>
           <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
-          <Route path="/game" exact render={(props) => <Game onAddAnswer={addAnswer} {...props}/>}/>
+          <Route path="/game" exact render={(props) => <Game questions={questions} onAddAnswer={addAnswer} {...props}/>}/>
           <Route path="/stats" exact component={Stats}/>
           <Footer/>
         </Fragment>

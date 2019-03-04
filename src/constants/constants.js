@@ -16,3 +16,8 @@ export const Timer = {
   STRING_SHIFT: 10, // correction for string format
   BLINK_START: 5 // second when timer starts blinking
 };
+
+export const Answer = {
+  PHOTO: `photo`,
+  PAINT: `paint`
+};

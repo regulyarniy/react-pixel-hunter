@@ -20,6 +20,7 @@ class Game extends Component {
     this.questions = this.props.questions;
     this.timer = Timer.START_VALUE;
     this.ticker = null;
+    this.handleSingleAnswer = this.handleSingleAnswer.bind(this);
   }
 
   get currentQuestionType() {
@@ -48,6 +49,7 @@ class Game extends Component {
       handleSwitchToNextQuestion: () => this.switchToNextQuestion(),
       answers: this.currentQuestionAnswers,
     };
+
     return (
       <Fragment>
         <Header
@@ -60,7 +62,7 @@ class Game extends Component {
             {{
               [GameTypes.OF_THREE]: <GameOfThree {...gameProps}/>,
               [GameTypes.OF_TWO]: <GameOfTwo {...gameProps}/>,
-              [GameTypes.TINDER]: <GameTinder {...gameProps}/>,
+              [GameTypes.TINDER]: <GameTinder {...gameProps} onAnswer={this.handleSingleAnswer}/>,
             }[this.currentQuestionType]}
             <GameStats/>
           </section>
@@ -101,84 +103,20 @@ class Game extends Component {
     this.timer = Timer.START_VALUE;
     this.tick();
   }
+
+  handleSingleAnswer(typeOfImage) {
+    if (typeOfImage === this.currentQuestionAnswers[0].type) {
+      this.props.onAddAnswer({isValid: true, timeLeft: this.timer});
+    } else {
+      this.props.onAddAnswer({isValid: false, timeLeft: this.timer});
+    }
+    this.switchToNextQuestion();
+  }
 }
 
 Game.propTypes = {
   questions: PropTypes.array.isRequired,
-  addAnswer: PropTypes.func,
-};
-
-Game.defaultProps = {
-  questions: [
-    {
-      type: `two-of-two`,
-      question: `Угадайте для каждого изображения фото или рисунок?`,
-      answers: [
-        {
-          image: {
-            url: `http://i.imgur.com/UIHVp0P.jpg`,
-            width: 468,
-            height: 458,
-          },
-          type: `photo`,
-        },
-        {
-          image: {
-            url: `http://i.imgur.com/eSlWjE7.jpg`,
-            width: 468,
-            height: 458,
-          },
-          type: `photo`,
-        },
-      ],
-    },
-    {
-      type: `one-of-three`,
-      question: `Найдите рисунок среди изображений`,
-      answers: [
-        {
-          image: {
-            url: `http://i.imgur.com/rY9u55S.jpg`,
-            width: 304,
-            height: 455,
-          },
-          type: `photo`,
-        },
-        {
-          image: {
-            url: `http://i.imgur.com/ncXRs5Y.jpg`,
-            width: 304,
-            height: 455,
-          },
-          type: `photo`,
-        },
-        {
-          image: {
-            url: `https://k39.kn3.net/E07A38605.jpg`,
-            width: 304,
-            height: 455,
-          },
-          type: `painting`,
-        },
-      ],
-    },
-    {
-      type: `tinder-like`,
-      question: `Угадай, фото или рисунок?`,
-      answers: [
-        {
-          image: {
-            url: `http://i.imgur.com/dWTKNtv.jpg`,
-            width: 705,
-            height: 455,
-          },
-          type: `photo`,
-        },
-      ],
-    },
-  ],
-  handleSwitchToNextScreen: () => {
-  },
+  onAddAnswer: PropTypes.func,
 };
 
 export default Game;
