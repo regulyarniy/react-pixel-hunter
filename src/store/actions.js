@@ -21,8 +21,17 @@ const setError = (error) => ({
   },
 });
 
+const addAnswer = ({isValid, timeLeft}) => ({
+  type: Type.ANSWER_ADD,
+  payload: {
+    isValid,
+    timeLeft
+  }
+});
+
 export default {
   requestQuestions,
   setError,
-  setName
+  setName,
+  addAnswer
 };

@@ -25,8 +25,15 @@ const setName = (name) => {
   };
 };
 
+const addAnswer = (answer) => {
+  return (dispatch) => {
+    dispatch(actions.addAnswer(answer));
+  };
+};
+
 export default {
   getQuestions,
   resetError,
-  setName
+  setName,
+  addAnswer
 };
