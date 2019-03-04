@@ -4,8 +4,7 @@ import GameOfTwo from './GameOfTwo';
 
 it(`renders without crashing`, () => {
   const mockProps = {
-    handleSwitchToNextQuestion: () => {
-    },
+    onAnswer: jest.fn(),
     answers: [
       {
         image: {
