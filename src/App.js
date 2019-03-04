@@ -14,14 +14,14 @@ const mapStateToProps = (state) => {
   return {
     questions: state.questions,
     errorText: state.error,
-    name: state.name
+    name: state.name,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getQuestions: () => dispatch(operations.getQuestions()),
-    setName: (name) => dispatch(operations.setName(name))
+    setName: (name) => dispatch(operations.setName(name)),
   };
 };
 
@@ -37,13 +37,11 @@ export class App extends Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <Fragment>
-          <main id="main" className="central">
-            <Route path="/" exact render={() => <Intro isQuestionsLoaded={isQuestionsLoaded} />}/>
-            <Route path="/welcome" exact component={Welcome}/>
-            <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
-            <Route path="/game" exact component={Game}/>
-            <Route path="/stats" exact component={Stats}/>
-          </main>
+          <Route path="/" exact render={() => <Intro isQuestionsLoaded={isQuestionsLoaded}/>}/>
+          <Route path="/welcome" exact component={Welcome}/>
+          <Route path="/rules" exact render={(props) => <Rules name={name} onSetName={setName} {...props}/>}/>
+          <Route path="/game" exact component={Game}/>
+          <Route path="/stats" exact component={Stats}/>
           <Footer/>
         </Fragment>
       </Router>
@@ -55,7 +53,7 @@ App.propTypes = {
   questions: PropTypes.array,
   getQuestions: PropTypes.func,
   setName: PropTypes.func,
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

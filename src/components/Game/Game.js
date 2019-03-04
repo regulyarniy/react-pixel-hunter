@@ -6,6 +6,7 @@ import GameOfThree from "./GameOfThree";
 import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
 import {API, Timer} from "../../constants/constants";
+
 const {GameTypes} = API;
 
 class Game extends Component {
@@ -45,7 +46,7 @@ class Game extends Component {
   render() {
     const gameProps = {
       handleSwitchToNextQuestion: () => this.switchToNextQuestion(),
-      answers: this.currentQuestionAnswers
+      answers: this.currentQuestionAnswers,
     };
     return (
       <Fragment>
@@ -53,15 +54,17 @@ class Game extends Component {
           isGameScreen={true}
           timeLeft={this.state.timeLeft}
         />
-        <section className="game">
-          <p className="game__task">{this.currentQuestionText}</p>
-          {{
-            [GameTypes.OF_THREE]: <GameOfThree {...gameProps}/>,
-            [GameTypes.OF_TWO]: <GameOfTwo {...gameProps}/>,
-            [GameTypes.TINDER]: <GameTinder {...gameProps}/>
-          }[this.currentQuestionType]}
-          <GameStats/>
-        </section>
+        <main id="main" className="central">
+          <section className="game">
+            <p className="game__task">{this.currentQuestionText}</p>
+            {{
+              [GameTypes.OF_THREE]: <GameOfThree {...gameProps}/>,
+              [GameTypes.OF_TWO]: <GameOfTwo {...gameProps}/>,
+              [GameTypes.TINDER]: <GameTinder {...gameProps}/>,
+            }[this.currentQuestionType]}
+            <GameStats/>
+          </section>
+        </main>
       </Fragment>
     );
   }
@@ -99,7 +102,7 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  questions: PropTypes.array.isRequired
+  questions: PropTypes.array.isRequired,
 };
 
 Game.defaultProps = {
@@ -112,19 +115,19 @@ Game.defaultProps = {
           image: {
             url: `http://i.imgur.com/UIHVp0P.jpg`,
             width: 468,
-            height: 458
+            height: 458,
           },
-          type: `photo`
+          type: `photo`,
         },
         {
           image: {
             url: `http://i.imgur.com/eSlWjE7.jpg`,
             width: 468,
-            height: 458
+            height: 458,
           },
-          type: `photo`
-        }
-      ]
+          type: `photo`,
+        },
+      ],
     },
     {
       type: `one-of-three`,
@@ -134,27 +137,27 @@ Game.defaultProps = {
           image: {
             url: `http://i.imgur.com/rY9u55S.jpg`,
             width: 304,
-            height: 455
+            height: 455,
           },
-          type: `photo`
+          type: `photo`,
         },
         {
           image: {
             url: `http://i.imgur.com/ncXRs5Y.jpg`,
             width: 304,
-            height: 455
+            height: 455,
           },
-          type: `photo`
+          type: `photo`,
         },
         {
           image: {
             url: `https://k39.kn3.net/E07A38605.jpg`,
             width: 304,
-            height: 455
+            height: 455,
           },
-          type: `painting`
-        }
-      ]
+          type: `painting`,
+        },
+      ],
     },
     {
       type: `tinder-like`,
@@ -164,14 +167,15 @@ Game.defaultProps = {
           image: {
             url: `http://i.imgur.com/dWTKNtv.jpg`,
             width: 705,
-            height: 455
+            height: 455,
           },
-          type: `photo`
-        }
-      ]
-    }
+          type: `photo`,
+        },
+      ],
+    },
   ],
-  handleSwitchToNextScreen: ()=>{}
+  handleSwitchToNextScreen: () => {
+  },
 };
 
 export default Game;

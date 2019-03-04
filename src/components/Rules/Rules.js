@@ -9,7 +9,7 @@ class Rules extends PureComponent {
     super(props);
 
     this.state = {
-      name: ``
+      name: ``,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,32 +24,35 @@ class Rules extends PureComponent {
     return (
       <Fragment>
         <Header isGameScreen={false}/>
-        <section className="rules">
-          <h2 className="rules__title">Правила</h2>
-          <ul className="rules__description">
-            <li>Угадай 10 раз для каждого изображения фото
-              <img className="rules__icon" src={imgIconPhoto} width="32" height="31" alt="Фото"/> или рисунок
-              <img className="rules__icon" src={imgIconPaint} width="32" height="31" alt="Рисунок"/>
-            </li>
-            <li>Фотографиями или рисунками могут быть оба изображения.</li>
-            <li>На каждую попытку отводится 30 секунд.</li>
-            <li>Ошибиться можно не более 3 раз.</li>
-          </ul>
-          <p className="rules__ready">Готовы?</p>
-          <form className="rules__form" onSubmit={this.handleSubmit}>
-            <input
-              className="rules__input"
-              type="text"
-              placeholder="Ваше Имя"
-              value={this.state.name}
-              onChange={this.handleChange}/>
-            <button
-              className="rules__button  continue"
-              type="submit"
-              disabled={!this.state.name}
-            >Go!</button>
-          </form>
-        </section>
+        <main id="main" className="central">
+          <section className="rules">
+            <h2 className="rules__title">Правила</h2>
+            <ul className="rules__description">
+              <li>Угадай 10 раз для каждого изображения фото
+                <img className="rules__icon" src={imgIconPhoto} width="32" height="31" alt="Фото"/> или рисунок
+                <img className="rules__icon" src={imgIconPaint} width="32" height="31" alt="Рисунок"/>
+              </li>
+              <li>Фотографиями или рисунками могут быть оба изображения.</li>
+              <li>На каждую попытку отводится 30 секунд.</li>
+              <li>Ошибиться можно не более 3 раз.</li>
+            </ul>
+            <p className="rules__ready">Готовы?</p>
+            <form className="rules__form" onSubmit={this.handleSubmit}>
+              <input
+                className="rules__input"
+                type="text"
+                placeholder="Ваше Имя"
+                value={this.state.name}
+                onChange={this.handleChange}/>
+              <button
+                className="rules__button  continue"
+                type="submit"
+                disabled={!this.state.name}
+              >Go!
+              </button>
+            </form>
+          </section>
+        </main>
       </Fragment>
     );
   }
@@ -69,7 +72,7 @@ class Rules extends PureComponent {
 Rules.propTypes = {
   history: PropTypes.object,
   onSetName: PropTypes.func,
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default Rules;
