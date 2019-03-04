@@ -21,6 +21,7 @@ class Game extends Component {
     this.timer = Timer.START_VALUE;
     this.ticker = null;
     this.handleSingleAnswer = this.handleSingleAnswer.bind(this);
+    this.handleDoubleAnswer = this.handleDoubleAnswer.bind(this);
   }
 
   get currentQuestionType() {
@@ -61,7 +62,7 @@ class Game extends Component {
             <p className="game__task">{this.currentQuestionText}</p>
             {{
               [GameTypes.OF_THREE]: <GameOfThree {...gameProps}/>,
-              [GameTypes.OF_TWO]: <GameOfTwo {...gameProps}/>,
+              [GameTypes.OF_TWO]: <GameOfTwo {...gameProps} onAnswer={this.handleDoubleAnswer}/>,
               [GameTypes.TINDER]: <GameTinder {...gameProps} onAnswer={this.handleSingleAnswer}/>,
             }[this.currentQuestionType]}
             <GameStats/>
@@ -105,11 +106,14 @@ class Game extends Component {
   }
 
   handleSingleAnswer(typeOfImage) {
-    if (typeOfImage === this.currentQuestionAnswers[0].type) {
-      this.props.onAddAnswer({isValid: true, timeLeft: this.timer});
-    } else {
-      this.props.onAddAnswer({isValid: false, timeLeft: this.timer});
-    }
+    const isValid = typeOfImage === this.currentQuestionAnswers[0].type;
+    this.props.onAddAnswer({isValid, timeLeft: this.timer});
+    this.switchToNextQuestion();
+  }
+
+  handleDoubleAnswer(answers) {
+    const isValid = answers.reduce((valid, item, index) => valid && item === this.currentQuestionAnswers[index].type, true);
+    this.props.onAddAnswer({isValid, timeLeft: this.timer});
     this.switchToNextQuestion();
   }
 }

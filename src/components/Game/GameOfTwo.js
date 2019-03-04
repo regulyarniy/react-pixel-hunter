@@ -1,54 +1,60 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
+import {Answer} from "../../constants/constants";
 
-const GameOfTwo = (props) => {
-  const options = props.answers.map((answer, index) => {
+class GameOfTwo extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      options: [null, null]
+    };
+
+    this.handleChooseAnswer = this.handleChooseAnswer.bind(this);
+  }
+
+  get optionsRender() {
+    return this.props.answers.map((answer, index) => {
+      return (
+        <div key={answer.image.url} className="game__option">
+          <img src={answer.image.url} alt={`Option ${index}`} width={answer.image.width} height={answer.image.height}/>
+          <label className="game__answer  game__answer--photo">
+            <input onClick={() => this.handleChooseAnswer(Answer.PHOTO, index)} className="visually-hidden" name={`question${index}`}
+              type="radio" value="photo"/>
+            <span>Фото</span>
+          </label>
+          <label className="game__answer  game__answer--paint">
+            <input onClick={() => this.handleChooseAnswer(Answer.PAINT, index)} className="visually-hidden" name={`question${index}`}
+              type="radio" value="paint"/>
+            <span>Рисунок</span>
+          </label>
+        </div>
+      );
+    });
+  }
+
+  render() {
     return (
-      <div key={answer.image.url} className="game__option">
-        <img src={answer.image.url} alt={`Option ${index}`} width={answer.image.width} height={answer.image.height}/>
-        <label className="game__answer  game__answer--photo" >
-          <input onClick={props.handleSwitchToNextQuestion} className="visually-hidden" name={`question${index}`} type="radio" value="photo"/>
-          <span>Фото</span>
-        </label>
-        <label className="game__answer  game__answer--paint">
-          <input onClick={props.handleSwitchToNextQuestion} className="visually-hidden" name={`question${index}`} type="radio" value="paint"/>
-          <span>Рисунок</span>
-        </label>
-      </div>
+      <form className="game__content">
+        {this.optionsRender}
+      </form>
     );
-  });
-  return (
-    <form className="game__content">
-      {options}
-    </form>
-  );
-};
+  }
+
+  handleChooseAnswer(typeOfImage, index) {
+    const newOptions = this.state.options.slice();
+    newOptions[index] = typeOfImage;
+    if (newOptions[0] && newOptions[1]) {
+      this.props.onAnswer(newOptions);
+    } else {
+      this.setState({options: newOptions});
+    }
+  }
+}
 
 GameOfTwo.propTypes = {
-  handleSwitchToNextQuestion: PropTypes.func.isRequired,
-  answers: PropTypes.array.isRequired
-};
-
-GameOfTwo.defaultProps = {
-  handleSwitchToNextQuestion: ()=>{},
-  answers: [
-    {
-      image: {
-        url: `http://i.imgur.com/UIHVp0P.jpg`,
-        width: 468,
-        height: 458
-      },
-      type: `photo`
-    },
-    {
-      image: {
-        url: `http://i.imgur.com/eSlWjE7.jpg`,
-        width: 468,
-        height: 458
-      },
-      type: `photo`
-    }
-  ]
+  onAnswer: PropTypes.func.isRequired,
+  answers: PropTypes.array.isRequired,
 };
 
 export default GameOfTwo;
