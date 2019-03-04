@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {App} from './App';
-import {MemoryRouter} from "react-router-dom";
+import {shallow} from "enzyme";
 
 describe(`App component`, () => {
   const mockProps = {
@@ -10,7 +9,6 @@ describe(`App component`, () => {
   };
 
   it(`renders without crashing`, () => {
-    const div = document.createElement(`div`);
-    ReactDOM.render(<MemoryRouter><App {...mockProps}/></MemoryRouter>, div);
+    shallow(<App {...mockProps}/>);
   });
 });

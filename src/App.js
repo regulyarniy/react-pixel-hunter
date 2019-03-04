@@ -44,7 +44,7 @@ export class App extends Component {
             <Route path="/game" exact component={Game}/>
             <Route path="/stats" exact component={Stats}/>
           </main>
-          <Route component={Footer}/>
+          <Footer/>
         </Fragment>
       </Router>
     );

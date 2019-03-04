@@ -40,6 +40,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.6",
     "eslint-loader": "2.1.1",
@@ -65,6 +67,7 @@
     "react-app-polyfill": "^0.2.0",
     "react-dev-utils": "^7.0.1",
     "react-redux": "6.0.0",
+    "react-test-renderer": "^16.8.3",
     "redux": "4.0.1",
     "redux-devtools-extension": "2.13.8",
     "redux-thunk": "2.3.0",
@@ -85,6 +88,7 @@
     "not op_mini all"
   ],
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
