@@ -19,5 +19,7 @@ export const Timer = {
 
 export const Answer = {
   PHOTO: `photo`,
-  PAINT: `paint`
+  PAINT: `painting`,
+  [`Найдите фото среди изображений`]: `photo`,
+  [`Найдите рисунок среди изображений`]: `painting`
 };

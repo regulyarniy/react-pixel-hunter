@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import GameOfThree from "./GameOfThree";
 import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
-import {API, Timer} from "../../constants/constants";
+import {Answer, API, Timer} from "../../constants/constants";
 
 const {GameTypes} = API;
 
@@ -22,6 +22,7 @@ class Game extends Component {
     this.ticker = null;
     this.handleSingleAnswer = this.handleSingleAnswer.bind(this);
     this.handleDoubleAnswer = this.handleDoubleAnswer.bind(this);
+    this.handleChosenAnswer = this.handleChosenAnswer.bind(this);
   }
 
   get currentQuestionType() {
@@ -46,11 +47,7 @@ class Game extends Component {
 
 
   render() {
-    const gameProps = {
-      handleSwitchToNextQuestion: () => this.switchToNextQuestion(),
-      answers: this.currentQuestionAnswers,
-    };
-
+    const gameProps = {answers: this.currentQuestionAnswers};
     return (
       <Fragment>
         <Header
@@ -61,7 +58,7 @@ class Game extends Component {
           <section className="game">
             <p className="game__task">{this.currentQuestionText}</p>
             {{
-              [GameTypes.OF_THREE]: <GameOfThree {...gameProps}/>,
+              [GameTypes.OF_THREE]: <GameOfThree {...gameProps} onAnswer={this.handleChosenAnswer}/>,
               [GameTypes.OF_TWO]: <GameOfTwo {...gameProps} onAnswer={this.handleDoubleAnswer}/>,
               [GameTypes.TINDER]: <GameTinder {...gameProps} onAnswer={this.handleSingleAnswer}/>,
             }[this.currentQuestionType]}
@@ -113,6 +110,12 @@ class Game extends Component {
 
   handleDoubleAnswer(answers) {
     const isValid = answers.reduce((valid, item, index) => valid && item === this.currentQuestionAnswers[index].type, true);
+    this.props.onAddAnswer({isValid, timeLeft: this.timer});
+    this.switchToNextQuestion();
+  }
+
+  handleChosenAnswer(typeOfImage) {
+    const isValid = typeOfImage === Answer[this.currentQuestionText];
     this.props.onAddAnswer({isValid, timeLeft: this.timer});
     this.switchToNextQuestion();
   }
