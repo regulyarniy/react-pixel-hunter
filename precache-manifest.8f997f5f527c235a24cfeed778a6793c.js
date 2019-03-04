@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "1ffc52aee7d9b8f87ccdb7f3d2189951",
-    "url": "/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
+    "revision": "400c14541b7297a097e57cc8f271f8a5",
+    "url": "/react-pixel-hunter/static/media/robotomedium.400c1454.woff2"
   },
   {
-    "revision": "31e0f44d55d141029b2b",
+    "revision": "fce75b2f22d38c82a65c",
     "url": "/react-pixel-hunter/static/css/main.3dc958f2.chunk.css"
   },
   {
-    "revision": "89cadf1393d2cf6bc079",
-    "url": "/react-pixel-hunter/static/js/1.89cadf13.chunk.js"
+    "revision": "6ee43588c2aadca6c372",
+    "url": "/react-pixel-hunter/static/js/1.6ee43588.chunk.js"
   },
   {
     "revision": "84457c0434c9a92a2d66",
@@ -20,20 +20,20 @@ self.__precacheManifest = [
     "url": "/react-pixel-hunter/static/media/sprite.b434b7c8.svg"
   },
   {
-    "revision": "add4cae340fa6ba6563ce2e8d9ffd19d",
-    "url": "/react-pixel-hunter/static/media/robotobold.add4cae3.woff2"
+    "revision": "1ffc52aee7d9b8f87ccdb7f3d2189951",
+    "url": "/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
   },
   {
-    "revision": "31e0f44d55d141029b2b",
-    "url": "/react-pixel-hunter/static/js/main.31e0f44d.chunk.js"
-  },
-  {
-    "revision": "400c14541b7297a097e57cc8f271f8a5",
-    "url": "/react-pixel-hunter/static/media/robotomedium.400c1454.woff2"
+    "revision": "fce75b2f22d38c82a65c",
+    "url": "/react-pixel-hunter/static/js/main.fce75b2f.chunk.js"
   },
   {
     "revision": "af01b5037ff63cf05210745f4c248269",
     "url": "/react-pixel-hunter/static/media/robotobold.af01b503.woff"
+  },
+  {
+    "revision": "add4cae340fa6ba6563ce2e8d9ffd19d",
+    "url": "/react-pixel-hunter/static/media/robotobold.add4cae3.woff2"
   },
   {
     "revision": "0f7fb3f830134f46529807a2baa3eb5e",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/react-pixel-hunter/static/media/egg_big.ee652214.png"
   },
   {
-    "revision": "c7c7596a6b57dc954c3733165796a265",
+    "revision": "1bf1fcada1706d4e0e2d7b96885a0397",
     "url": "/react-pixel-hunter/index.html"
   }
 ];
