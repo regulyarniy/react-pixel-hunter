@@ -1,7 +1,7 @@
 {
   "main.css": "/react-pixel-hunter/static/css/main.3dc958f2.chunk.css",
-  "main.js": "/react-pixel-hunter/static/js/main.11c9e8a1.chunk.js",
-  "main.js.map": "/react-pixel-hunter/static/js/main.11c9e8a1.chunk.js.map",
+  "main.js": "/react-pixel-hunter/static/js/main.37e1d04f.chunk.js",
+  "main.js.map": "/react-pixel-hunter/static/js/main.37e1d04f.chunk.js.map",
   "static/js/1.89cadf13.chunk.js": "/react-pixel-hunter/static/js/1.89cadf13.chunk.js",
   "static/js/1.89cadf13.chunk.js.map": "/react-pixel-hunter/static/js/1.89cadf13.chunk.js.map",
   "runtime~main.js": "/react-pixel-hunter/static/js/runtime~main.84457c04.js",
@@ -10,6 +10,6 @@
   "static/media/style.scss": "/react-pixel-hunter/static/media/robotobold.add4cae3.woff2",
   "static/css/main.3dc958f2.chunk.css.map": "/react-pixel-hunter/static/css/main.3dc958f2.chunk.css.map",
   "index.html": "/react-pixel-hunter/index.html",
-  "precache-manifest.6220c29a4a38cc28816fc688fc4d7e2d.js": "/react-pixel-hunter/precache-manifest.6220c29a4a38cc28816fc688fc4d7e2d.js",
+  "precache-manifest.9e7d8817b88fa09a750a3c6404f36d72.js": "/react-pixel-hunter/precache-manifest.9e7d8817b88fa09a750a3c6404f36d72.js",
   "service-worker.js": "/react-pixel-hunter/service-worker.js"
 }
