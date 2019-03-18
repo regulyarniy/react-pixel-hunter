@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 const appReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
-    case Type.REQUEST_QUESTIONS:
+    case Type.QUESTIONS_REQUEST:
       return {
         ...state,
         questions: action.payload.questions,

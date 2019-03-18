@@ -1,7 +1,7 @@
 import Type from './types';
 
 const requestQuestions = (questions) => ({
-  type: Type.REQUEST_QUESTIONS,
+  type: Type.QUESTIONS_REQUEST,
   payload: {
     questions,
   },
