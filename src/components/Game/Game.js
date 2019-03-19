@@ -62,7 +62,7 @@ class Game extends Component {
               [GameTypes.OF_TWO]: <GameOfTwo {...gameProps} onAnswer={this.handleDoubleAnswer}/>,
               [GameTypes.TINDER]: <GameTinder {...gameProps} onAnswer={this.handleSingleAnswer}/>,
             }[this.currentQuestionType]}
-            <GameStats/>
+            <GameStats answers={this.props.answers} length={this.questions.length}/>
           </section>
         </main>
       </Fragment>
@@ -124,6 +124,7 @@ class Game extends Component {
 Game.propTypes = {
   questions: PropTypes.array.isRequired,
   onAddAnswer: PropTypes.func,
+  answers: PropTypes.array
 };
 
 export default Game;

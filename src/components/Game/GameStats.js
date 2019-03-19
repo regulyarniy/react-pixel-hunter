@@ -1,20 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
+import getAnswerResult from "../../utils/getAnswerResult";
 
-const GameStats = () => {
+const GameStats = ({answers, length}) => {
+  const filledAnswers = [...answers];
+  filledAnswers.length = length;
+  filledAnswers.fill(null, answers.length);
+  const results = filledAnswers.map((answer, index) => <li key={index}
+    className={`stats__result ${getAnswerResult(answer)}`}/>);
   return (
     <ul className="stats">
-      <li className="stats__result stats__result--wrong"/>
-      <li className="stats__result stats__result--slow"/>
-      <li className="stats__result stats__result--fast"/>
-      <li className="stats__result stats__result--correct"/>
-      <li className="stats__result stats__result--unknown"/>
-      <li className="stats__result stats__result--unknown"/>
-      <li className="stats__result stats__result--unknown"/>
-      <li className="stats__result stats__result--unknown"/>
-      <li className="stats__result stats__result--unknown"/>
-      <li className="stats__result stats__result--unknown"/>
+      {results}
     </ul>
   );
+};
+
+GameStats.propTypes = {
+  answers: PropTypes.array,
+  length: PropTypes.number
 };
 
 export default GameStats;
