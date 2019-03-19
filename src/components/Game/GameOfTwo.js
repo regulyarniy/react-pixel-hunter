@@ -17,7 +17,7 @@ class GameOfTwo extends PureComponent {
     return this.props.answers.map((answer, index) => {
       return (
         <div key={answer.image.url} className="game__option">
-          <img src={answer.image.url} alt={`Option ${index}`} width={answer.image.width} height={answer.image.height}/>
+          <img src={answer.image.url} alt={`Option ${index}`}/>
           <label className="game__answer  game__answer--photo">
             <input onClick={() => this.handleChooseAnswer(Answer.PHOTO, index)} className="visually-hidden" name={`question${index}`}
               type="radio" value="photo"/>

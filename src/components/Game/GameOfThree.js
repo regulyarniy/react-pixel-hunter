@@ -5,7 +5,7 @@ const GameOfThree = ({answers, onAnswer}) => {
   const options = answers.map((answer, index) => {
     return (
       <div key={answer.image.url} onClick={() => onAnswer(answer.type)} className="game__option">
-        <img src={answer.image.url} alt={`Option ${index}`} width={answer.image.width} height={answer.image.height}/>
+        <img src={answer.image.url} alt={`Option ${index}`}/>
       </div>
     );
   });

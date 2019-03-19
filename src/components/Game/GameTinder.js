@@ -6,7 +6,7 @@ const GameTinder = ({answers, onAnswer}) => {
   return (
     <form className="game__content  game__content--wide">
       <div className="game__option">
-        <img src={answers[0].image.url} alt="Option 1" width={answers[0].image.width} height={answers[0].image.height}/>
+        <img src={answers[0].image.url} alt="Option 1"/>
         <label className="game__answer  game__answer--photo">
           <input onClick={() => onAnswer(Answer.PHOTO)} className="visually-hidden" name="question1" type="radio" value="photo"/>
           <span>Фото</span>
