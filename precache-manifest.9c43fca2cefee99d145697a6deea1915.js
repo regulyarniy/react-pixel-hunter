@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/react-pixel-hunter/static/media/roboto.1ffc52ae.woff2"
   },
   {
-    "revision": "e899100eeb20ebe1980f",
-    "url": "/react-pixel-hunter/static/css/main.0423c686.chunk.css"
+    "revision": "0a88a503ae0b716b112a",
+    "url": "/react-pixel-hunter/static/css/main.06a6b28d.chunk.css"
   },
   {
-    "revision": "764c35af1954bc53e54e",
-    "url": "/react-pixel-hunter/static/js/1.764c35af.chunk.js"
+    "revision": "cd861b3348016794cd33",
+    "url": "/react-pixel-hunter/static/js/1.cd861b33.chunk.js"
   },
   {
     "revision": "84457c0434c9a92a2d66",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/react-pixel-hunter/static/media/robotobold.add4cae3.woff2"
   },
   {
-    "revision": "e899100eeb20ebe1980f",
-    "url": "/react-pixel-hunter/static/js/main.e899100e.chunk.js"
+    "revision": "0a88a503ae0b716b112a",
+    "url": "/react-pixel-hunter/static/js/main.0a88a503.chunk.js"
   },
   {
     "revision": "400c14541b7297a097e57cc8f271f8a5",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/react-pixel-hunter/static/media/egg_big.ee652214.png"
   },
   {
-    "revision": "1f4f19315e2f1c7ceb3cffecb4fefd01",
+    "revision": "a6fa1a6fe9038465fd46fa0bb671c351",
     "url": "/react-pixel-hunter/index.html"
   }
 ];
