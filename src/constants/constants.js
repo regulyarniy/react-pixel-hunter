@@ -23,3 +23,16 @@ export const Answer = {
   [`Найдите фото среди изображений`]: `photo`,
   [`Найдите рисунок среди изображений`]: `painting`
 };
+
+export const AnswerResult = {
+  UNKNOWN: `stats__result--unknown`,
+  CORRECT: `stats__result--correct`,
+  FAST: `stats__result--fast`,
+  SLOW: `stats__result--slow`,
+  WRONG: `stats__result--wrong`
+};
+
+export const AnswerConfig = {
+  FAST_THRESHOLD: 10, // limit in seconds for fast answer (below and equal)
+  SLOW_THRESHOLD: 20, // limit in seconds for slow answer (over)
+};
