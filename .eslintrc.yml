@@ -1,11 +1,11 @@
 parserOptions:
   ecmaVersion: 2018
-  sourceType: 'module'
+  sourceType: "module"
   allowImportExportEverywhere: true
 
 settings:
   react:
-    version: 'detect'
+    version: "detect"
 
 env:
   es6: true
@@ -16,5 +16,13 @@ env:
 
 rules:
   no-process-env: off
+  no-invalid-this: 0
+  babel/no-invalid-this: 1
 
-extends: ['htmlacademy/es6', 'plugin:react/recommended']
+parser: "babel-eslint"
+
+extends: ["htmlacademy/es6", "plugin:react/recommended", "prettier"]
+
+plugins:
+  - "babel"
+  - "prettier"

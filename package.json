@@ -14,7 +14,11 @@
   "devDependencies": {
     "axios": "0.18.0",
     "eslint-config-htmlacademy": "0.5.x",
+    "eslint-config-prettier": "4.3.0",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-prettier": "3.1.0",
     "node-sass": "4.11.0",
+    "prettier": "1.17.1",
     "prop-types": "15.6.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",
