@@ -1,13 +1,28 @@
 import React, { Fragment } from "react";
 import Header from "../Header/Header";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import getAnswerResult from "../../utils/getAnswerResult";
 
-const Stats = (props) => {
+const mapStateToProps = (state) => ({
+  answers: state.answers,
+});
+
+const Stats = ({ answers, handleSwitchToWelcomeScreen }) => {
+  const currentAnswers = answers.map((answer, index) => (
+    <li key={index} className={`stats__result ${getAnswerResult(answer)}`} />
+  ));
+
+  if (answers.length < 1) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <Fragment>
       <Header
         isGameScreen={false}
-        handleSwitchToWelcomeScreen={props.handleSwitchToWelcomeScreen}
+        handleSwitchToWelcomeScreen={handleSwitchToWelcomeScreen}
       />
       <main id="main" className="central">
         <section className="result">
@@ -18,16 +33,11 @@ const Stats = (props) => {
                 <td className="result__number">1.</td>
                 <td colSpan="2">
                   <ul className="stats">
-                    <li className="stats__result stats__result--wrong" />
-                    <li className="stats__result stats__result--slow" />
-                    <li className="stats__result stats__result--fast" />
-                    <li className="stats__result stats__result--correct" />
-                    <li className="stats__result stats__result--wrong" />
-                    <li className="stats__result stats__result--unknown" />
-                    <li className="stats__result stats__result--slow" />
-                    <li className="stats__result stats__result--unknown" />
-                    <li className="stats__result stats__result--fast" />
-                    <li className="stats__result stats__result--unknown" />
+                    {currentAnswers}
+                    {/* <li className="stats__result stats__result--slow" />*/}
+                    {/* <li className="stats__result stats__result--fast" />*/}
+                    {/* <li className="stats__result stats__result--wrong" />*/}
+                    {/* <li className="stats__result stats__result--unknown" />*/}
                   </ul>
                 </td>
                 <td className="result__points">× 100</td>
@@ -135,10 +145,11 @@ const Stats = (props) => {
 
 Stats.propTypes = {
   handleSwitchToWelcomeScreen: PropTypes.func.isRequired,
+  answers: PropTypes.arrayOf(PropTypes.object),
 };
 
 Stats.defaultProps = {
   handleSwitchToWelcomeScreen: () => {},
 };
 
-export default Stats;
+export default connect(mapStateToProps)(Stats);
