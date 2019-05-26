@@ -1,6 +1,6 @@
-import React from 'react';
-import {shallow} from "enzyme";
-import GameOfTwo from './GameOfTwo';
+import React from "react";
+import { shallow } from "enzyme";
+import GameOfTwo from "./GameOfTwo";
 
 it(`renders without crashing`, () => {
   const mockProps = {
@@ -24,5 +24,5 @@ it(`renders without crashing`, () => {
       },
     ],
   };
-  shallow(<GameOfTwo {...mockProps}/>);
+  shallow(<GameOfTwo {...mockProps} />);
 });

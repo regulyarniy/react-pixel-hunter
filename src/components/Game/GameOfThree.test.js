@@ -1,6 +1,6 @@
-import React from 'react';
-import {shallow} from "enzyme";
-import GameOfThree from './GameOfThree';
+import React from "react";
+import { shallow } from "enzyme";
+import GameOfThree from "./GameOfThree";
 
 it(`renders without crashing`, () => {
   const mockProps = {
@@ -10,28 +10,28 @@ it(`renders without crashing`, () => {
         image: {
           url: `http://i.imgur.com/rY9u55S.jpg`,
           width: 304,
-          height: 455
+          height: 455,
         },
-        type: `photo`
+        type: `photo`,
       },
       {
         image: {
           url: `http://i.imgur.com/ncXRs5Y.jpg`,
           width: 304,
-          height: 455
+          height: 455,
         },
-        type: `photo`
+        type: `photo`,
       },
       {
         image: {
           url: `https://k39.kn3.net/E07A38605.jpg`,
           width: 304,
-          height: 455
+          height: 455,
         },
-        type: `painting`
-      }
-    ]
+        type: `painting`,
+      },
+    ],
   };
 
-  shallow(<GameOfThree {...mockProps}/>);
+  shallow(<GameOfThree {...mockProps} />);
 });

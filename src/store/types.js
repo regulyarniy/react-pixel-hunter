@@ -9,5 +9,5 @@ export default {
   ERROR_SET,
   ERROR_RESET,
   NAME_SET,
-  ANSWER_ADD
+  ANSWER_ADD,
 };

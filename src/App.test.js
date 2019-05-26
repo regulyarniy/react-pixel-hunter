@@ -1,14 +1,14 @@
-import React from 'react';
-import {App} from './App';
-import {shallow} from "enzyme";
+import React from "react";
+import { App } from "./App";
+import { shallow } from "enzyme";
 
 describe(`App component`, () => {
   const mockProps = {
     getQuestions: jest.fn(),
-    questions: []
+    questions: [],
   };
 
   it(`renders without crashing`, () => {
-    shallow(<App {...mockProps}/>);
+    shallow(<App {...mockProps} />);
   });
 });

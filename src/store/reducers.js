@@ -1,4 +1,4 @@
-import Type from './types';
+import Type from "./types";
 
 const INITIAL_STATE = {
   questions: [],
@@ -9,7 +9,6 @@ const INITIAL_STATE = {
 
 const appReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-
     case Type.QUESTIONS_REQUEST:
       return {
         ...state,
@@ -30,11 +29,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
     case Type.ANSWER_ADD: {
       const newAnswers = state.answers.slice();
-      const {isValid, timeLeft} = action.payload;
-      newAnswers.push({isValid, timeLeft});
+      const { isValid, timeLeft } = action.payload;
+      newAnswers.push({ isValid, timeLeft });
       return {
         ...state,
-        answers: newAnswers
+        answers: newAnswers,
       };
     }
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import {shallow} from "enzyme";
-import GameTinder from './GameTinder';
+import React from "react";
+import { shallow } from "enzyme";
+import GameTinder from "./GameTinder";
 
 it(`renders without crashing`, () => {
   const mockProps = {
@@ -9,13 +9,13 @@ it(`renders without crashing`, () => {
         image: {
           url: `http://i.imgur.com/dWTKNtv.jpg`,
           width: 705,
-          height: 455
+          height: 455,
         },
-        type: `photo`
-      }
+        type: `photo`,
+      },
     ],
-    onAnswer: jest.fn()
+    onAnswer: jest.fn(),
   };
 
-  shallow(<GameTinder {...mockProps}/>);
+  shallow(<GameTinder {...mockProps} />);
 });

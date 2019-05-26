@@ -1,13 +1,13 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import {Answer} from "../../constants/constants";
+import { Answer } from "../../constants/constants";
 
 class GameOfTwo extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      options: [null, null]
+      options: [null, null],
     };
 
     this.handleChooseAnswer = this.handleChooseAnswer.bind(this);
@@ -17,15 +17,25 @@ class GameOfTwo extends PureComponent {
     return this.props.answers.map((answer, index) => {
       return (
         <div key={answer.image.url} className="game__option">
-          <img src={answer.image.url} alt={`Option ${index}`}/>
+          <img src={answer.image.url} alt={`Option ${index}`} />
           <label className="game__answer  game__answer--photo">
-            <input onClick={() => this.handleChooseAnswer(Answer.PHOTO, index)} className="visually-hidden" name={`question${index}`}
-              type="radio" value="photo"/>
+            <input
+              onClick={() => this.handleChooseAnswer(Answer.PHOTO, index)}
+              className="visually-hidden"
+              name={`question${index}`}
+              type="radio"
+              value="photo"
+            />
             <span>Фото</span>
           </label>
           <label className="game__answer  game__answer--paint">
-            <input onClick={() => this.handleChooseAnswer(Answer.PAINT, index)} className="visually-hidden" name={`question${index}`}
-              type="radio" value="paint"/>
+            <input
+              onClick={() => this.handleChooseAnswer(Answer.PAINT, index)}
+              className="visually-hidden"
+              name={`question${index}`}
+              type="radio"
+              value="paint"
+            />
             <span>Рисунок</span>
           </label>
         </div>
@@ -34,11 +44,7 @@ class GameOfTwo extends PureComponent {
   }
 
   render() {
-    return (
-      <form className="game__content">
-        {this.optionsRender}
-      </form>
-    );
+    return <form className="game__content">{this.optionsRender}</form>;
   }
 
   handleChooseAnswer(typeOfImage, index) {
@@ -47,7 +53,7 @@ class GameOfTwo extends PureComponent {
     if (newOptions[0] && newOptions[1]) {
       this.props.onAnswer(newOptions);
     } else {
-      this.setState({options: newOptions});
+      this.setState({ options: newOptions });
     }
   }
 }

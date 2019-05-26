@@ -1,4 +1,4 @@
-import Type from './types';
+import Type from "./types";
 
 const requestQuestions = (questions) => ({
   type: Type.QUESTIONS_REQUEST,
@@ -10,8 +10,8 @@ const requestQuestions = (questions) => ({
 const setName = (name) => ({
   type: Type.NAME_SET,
   payload: {
-    name
-  }
+    name,
+  },
 });
 
 const setError = (error) => ({
@@ -21,17 +21,17 @@ const setError = (error) => ({
   },
 });
 
-const addAnswer = ({isValid, timeLeft}) => ({
+const addAnswer = ({ isValid, timeLeft }) => ({
   type: Type.ANSWER_ADD,
   payload: {
     isValid,
-    timeLeft
-  }
+    timeLeft,
+  },
 });
 
 export default {
   requestQuestions,
   setError,
   setName,
-  addAnswer
+  addAnswer,
 };

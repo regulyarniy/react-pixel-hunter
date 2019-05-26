@@ -1,4 +1,4 @@
-import React, {Fragment, PureComponent} from 'react';
+import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
 import Header from "../Header/Header";
 import imgIconPhoto from "../../img/icon-photo.png";
@@ -17,20 +17,34 @@ class Rules extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState({name: this.props.name});
+    this.setState({ name: this.props.name });
   }
 
   render() {
     return (
       <Fragment>
-        <Header isGameScreen={false}/>
+        <Header isGameScreen={false} />
         <main id="main" className="central">
           <section className="rules">
             <h2 className="rules__title">Правила</h2>
             <ul className="rules__description">
-              <li>Угадай 10 раз для каждого изображения фото
-                <img className="rules__icon" src={imgIconPhoto} width="32" height="31" alt="Фото"/> или рисунок
-                <img className="rules__icon" src={imgIconPaint} width="32" height="31" alt="Рисунок"/>
+              <li>
+                Угадай 10 раз для каждого изображения фото
+                <img
+                  className="rules__icon"
+                  src={imgIconPhoto}
+                  width="32"
+                  height="31"
+                  alt="Фото"
+                />{" "}
+                или рисунок
+                <img
+                  className="rules__icon"
+                  src={imgIconPaint}
+                  width="32"
+                  height="31"
+                  alt="Рисунок"
+                />
               </li>
               <li>Фотографиями или рисунками могут быть оба изображения.</li>
               <li>На каждую попытку отводится 30 секунд.</li>
@@ -43,12 +57,14 @@ class Rules extends PureComponent {
                 type="text"
                 placeholder="Ваше Имя"
                 value={this.state.name}
-                onChange={this.handleChange}/>
+                onChange={this.handleChange}
+              />
               <button
                 className="rules__button  continue"
                 type="submit"
                 disabled={!this.state.name}
-              >Go!
+              >
+                Go!
               </button>
             </form>
           </section>
@@ -58,7 +74,7 @@ class Rules extends PureComponent {
   }
 
   handleChange(event) {
-    this.setState({name: event.target.value});
+    this.setState({ name: event.target.value });
   }
 
   handleSubmit(event) {
@@ -66,7 +82,6 @@ class Rules extends PureComponent {
     this.props.onSetName(this.state.name);
     this.props.history.push(`/game`);
   }
-
 }
 
 Rules.propTypes = {

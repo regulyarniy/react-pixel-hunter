@@ -1,13 +1,13 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import Header from "../Header/Header";
 import GameStats from "./GameStats";
 import PropTypes from "prop-types";
 import GameOfThree from "./GameOfThree";
 import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
-import {Answer, API, Timer} from "../../constants/constants";
+import { Answer, API, Timer } from "../../constants/constants";
 
-const {GameTypes} = API;
+const { GameTypes } = API;
 
 class Game extends Component {
   constructor(props) {
@@ -45,24 +45,40 @@ class Game extends Component {
     clearTimeout(this.ticker);
   }
 
-
   render() {
-    const gameProps = {answers: this.currentQuestionAnswers};
+    const gameProps = { answers: this.currentQuestionAnswers };
     return (
       <Fragment>
-        <Header
-          isGameScreen={true}
-          timeLeft={this.state.timeLeft}
-        />
+        <Header isGameScreen={true} timeLeft={this.state.timeLeft} />
         <main id="main" className="central">
           <section className="game">
             <p className="game__task">{this.currentQuestionText}</p>
-            {{
-              [GameTypes.OF_THREE]: <GameOfThree {...gameProps} onAnswer={this.handleChosenAnswer}/>,
-              [GameTypes.OF_TWO]: <GameOfTwo {...gameProps} onAnswer={this.handleDoubleAnswer}/>,
-              [GameTypes.TINDER]: <GameTinder {...gameProps} onAnswer={this.handleSingleAnswer}/>,
-            }[this.currentQuestionType]}
-            <GameStats answers={this.props.answers} length={this.questions.length}/>
+            {
+              {
+                [GameTypes.OF_THREE]: (
+                  <GameOfThree
+                    {...gameProps}
+                    onAnswer={this.handleChosenAnswer}
+                  />
+                ),
+                [GameTypes.OF_TWO]: (
+                  <GameOfTwo
+                    {...gameProps}
+                    onAnswer={this.handleDoubleAnswer}
+                  />
+                ),
+                [GameTypes.TINDER]: (
+                  <GameTinder
+                    {...gameProps}
+                    onAnswer={this.handleSingleAnswer}
+                  />
+                ),
+              }[this.currentQuestionType]
+            }
+            <GameStats
+              answers={this.props.answers}
+              length={this.questions.length}
+            />
           </section>
         </main>
       </Fragment>
@@ -71,7 +87,7 @@ class Game extends Component {
 
   switchToNextQuestion() {
     if (this.state.currentQuestion < this.questions.length - 1) {
-      this.setState({currentQuestion: this.state.currentQuestion + 1});
+      this.setState({ currentQuestion: this.state.currentQuestion + 1 });
       this.resetTimer();
     } else {
       this.props.history.push(`/stats`);
@@ -82,12 +98,11 @@ class Game extends Component {
     this.timer = this.timer - Timer.DECREMENT;
     this.ticker = setTimeout(() => {
       this.setState({
-        timeLeft: this.timer < Timer.STRING_SHIFT
-          ? `0${this.timer}`
-          : `${this.timer}`,
+        timeLeft:
+          this.timer < Timer.STRING_SHIFT ? `0${this.timer}` : `${this.timer}`,
       });
       if (this.timer === Timer.STOP_VALUE) {
-        this.props.onAddAnswer({isValid: false, timeLeft: Timer.STOP_VALUE});
+        this.props.onAddAnswer({ isValid: false, timeLeft: Timer.STOP_VALUE });
         this.switchToNextQuestion();
         return;
       }
@@ -97,26 +112,30 @@ class Game extends Component {
 
   resetTimer() {
     clearTimeout(this.ticker);
-    this.setState({timeLeft: Timer.START_VALUE.toString()});
+    this.setState({ timeLeft: Timer.START_VALUE.toString() });
     this.timer = Timer.START_VALUE;
     this.tick();
   }
 
   handleSingleAnswer(typeOfImage) {
     const isValid = typeOfImage === this.currentQuestionAnswers[0].type;
-    this.props.onAddAnswer({isValid, timeLeft: this.timer});
+    this.props.onAddAnswer({ isValid, timeLeft: this.timer });
     this.switchToNextQuestion();
   }
 
   handleDoubleAnswer(answers) {
-    const isValid = answers.reduce((valid, item, index) => valid && item === this.currentQuestionAnswers[index].type, true);
-    this.props.onAddAnswer({isValid, timeLeft: this.timer});
+    const isValid = answers.reduce(
+      (valid, item, index) =>
+        valid && item === this.currentQuestionAnswers[index].type,
+      true
+    );
+    this.props.onAddAnswer({ isValid, timeLeft: this.timer });
     this.switchToNextQuestion();
   }
 
   handleChosenAnswer(typeOfImage) {
     const isValid = typeOfImage === Answer[this.currentQuestionText];
-    this.props.onAddAnswer({isValid, timeLeft: this.timer});
+    this.props.onAddAnswer({ isValid, timeLeft: this.timer });
     this.switchToNextQuestion();
   }
 }
@@ -124,7 +143,7 @@ class Game extends Component {
 Game.propTypes = {
   questions: PropTypes.array.isRequired,
   onAddAnswer: PropTypes.func,
-  answers: PropTypes.array
+  answers: PropTypes.array,
 };
 
 export default Game;
