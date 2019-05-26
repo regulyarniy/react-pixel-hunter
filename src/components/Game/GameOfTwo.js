@@ -9,8 +9,6 @@ class GameOfTwo extends PureComponent {
     this.state = {
       options: [null, null],
     };
-
-    this.handleChooseAnswer = this.handleChooseAnswer.bind(this);
   }
 
   get optionsRender() {
@@ -20,7 +18,7 @@ class GameOfTwo extends PureComponent {
           <img src={answer.image.url} alt={`Option ${index}`} />
           <label className="game__answer  game__answer--photo">
             <input
-              onClick={() => this.handleChooseAnswer(Answer.PHOTO, index)}
+              onClick={this.handleChooseAnswer(Answer.PHOTO, index)}
               className="visually-hidden"
               name={`question${index}`}
               type="radio"
@@ -30,7 +28,7 @@ class GameOfTwo extends PureComponent {
           </label>
           <label className="game__answer  game__answer--paint">
             <input
-              onClick={() => this.handleChooseAnswer(Answer.PAINT, index)}
+              onClick={this.handleChooseAnswer(Answer.PAINT, index)}
               className="visually-hidden"
               name={`question${index}`}
               type="radio"
@@ -47,15 +45,17 @@ class GameOfTwo extends PureComponent {
     return <form className="game__content">{this.optionsRender}</form>;
   }
 
-  handleChooseAnswer(typeOfImage, index) {
+  handleChooseAnswer = (typeOfImage, index) => (event) => {
+    event.preventDefault();
     const newOptions = this.state.options.slice();
     newOptions[index] = typeOfImage;
     if (newOptions[0] && newOptions[1]) {
       this.props.onAnswer(newOptions);
+      event.target.blur();
     } else {
       this.setState({ options: newOptions });
     }
-  }
+  };
 }
 
 GameOfTwo.propTypes = {

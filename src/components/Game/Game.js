@@ -6,6 +6,7 @@ import GameOfThree from "./GameOfThree";
 import GameOfTwo from "./GameOfTwo";
 import GameTinder from "./GameTinder";
 import { Answer, API, Timer } from "../../constants/constants";
+import { Redirect } from "react-router-dom";
 
 const { GameTypes } = API;
 
@@ -46,7 +47,12 @@ class Game extends Component {
   }
 
   render() {
+    if (this.questions.length < 1) {
+      return <Redirect to="/" />;
+    }
+
     const gameProps = { answers: this.currentQuestionAnswers };
+
     return (
       <Fragment>
         <Header isGameScreen={true} timeLeft={this.state.timeLeft} />
